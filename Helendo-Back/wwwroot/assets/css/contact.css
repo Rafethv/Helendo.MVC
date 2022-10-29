@@ -1,0 +1,167 @@
+.header {
+    background-color: #fff;
+}
+
+.contact-title-section {
+    width: 100%;
+    padding: 80px 0;
+    margin-top: 80px;
+    background-color: rgb(244, 245, 247);
+}
+
+.contact-title-section .contact-title-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact-title-section .contact-title__header {
+    width: 50%;
+}
+
+.contact-title-section .contact-title__navigation {
+    width: 50%;
+    display: flex;
+
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
+.contact-title-section .contact-title-container ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+}
+
+.contact-title-section .contact-title-container ul li a {
+    text-decoration: none;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.contact-title-section .contact-title-container ul li a::after {
+    content: "/";
+    padding: 15px;
+}
+
+.contact-title-section .contact-title-container ul li span {
+    color: rgb(119, 119, 119);
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.contact-section {
+    margin: 60px 0;
+}
+
+.contact-section .single-contact {
+    display: flex;
+}
+
+.contact-section .single-contact span {
+    margin-top: 8px;
+}
+
+.contact-section .single-contact span i {
+    font-size: 28px;
+}
+
+.contact-section .single-contact .single-contact-info {
+    margin-left: 26px;
+}
+
+.contact-section .single-contact h2 {
+    font-size: 18px;
+}
+
+.get-touch-section {
+    padding: 65px 120px;
+    border-top: 1px solid #e5e7eb
+}
+
+.get-touch-section .contact-form-wrap h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.get-touch-section .contact-form-wrap p {
+    margin-bottom: 30px;
+}
+
+.get-touch-section .contact-form-wrap input {
+    width:49%;
+    padding: 10px 20px;
+}
+
+.get-touch-section .contact-form-wrap .contact-form-first input:first-child {
+    margin-right: 9px;
+}
+
+.get-touch-section .contact-form-wrap input.f-full {
+    width: 100%;
+}
+
+.get-touch-section .contact-form-wrap textarea {
+    height: 176px;
+    padding: 15px;
+    width: 100%;
+}
+
+.get-touch-section .contact-form-wrap div {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.get-touch-section .contact-form-info {
+    padding-left: 120px;
+}
+
+@media screen and (max-width: 992px) {
+    .get-touch-section .contact-form-info {
+        padding-left: 0;
+    }
+}
+
+.get-touch-section .contact-form-info h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+
+.get-touch-section .contact-form-info .contact-form-socails {
+    display: flex;
+    padding-top: 60px;
+}
+
+.get-touch-section .contact-form-info .contact-form-socails ul {
+    display: flex;
+    list-style: none;
+    margin-bottom: 0;
+}
+
+
+.get-touch-section .contact-form-info .contact-form-socails ul li {
+    padding: 5px 10px;
+}
+
+.get-touch-section .contact-form-info .contact-form-socails ul li a {
+    color: #000;
+    transition: .3s all ease-in;
+}
+
+.get-touch-section .contact-form-info .contact-form-socails ul li a:hover {
+    color: rgb(220, 177, 74);
+    transition: .3s all ease-out;
+}
+
+.get-touch-section .contact-form-info .contact-form-socails h2 {
+    padding-right: 65px;
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 0;
+}

@@ -1,0 +1,116 @@
+.header {
+    background-color: #fff;
+}
+
+.blog-title-section {
+    width: 100%;
+    padding: 80px 0;
+    margin-top: 80px;
+    background-color: rgb(244, 245, 247);
+}
+
+.blog-title-section .blog-title-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.blog-title-section .blog-title__header {
+    width: 50%;
+}
+
+.blog-title-section .blog-title__navigation {
+    width: 50%;
+    display: flex;
+
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
+.blog-title-section .blog-title-container ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+}
+
+.blog-title-section .blog-title-container ul li a {
+    text-decoration: none;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.blog-title-section .blog-title-container ul li a::after {
+    content: "/";
+    padding: 15px;
+}
+
+.blog-title-section .blog-title-container ul li span {
+    color: rgb(119, 119, 119);
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.blogs-section {
+    padding-top: 40px;
+    padding-bottom: 90px;
+}
+
+.blogs-section .blog-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+}
+
+.blogs-section .blog-header h2 {
+    padding-bottom: 12px;
+    border-bottom: 4px solid rgb(220, 177, 74);
+}
+
+.blogs-section .card {
+    border: none;
+}
+
+.blogs-section .card .card-body {
+    padding: 20px 0;
+}
+
+.blogs-section .card .card-body a {
+    text-decoration: none;
+    color: #000;
+    transition: .3s all ease-in;
+}
+
+.blogs-section .card .card-body a:hover {
+    color: rgb(220, 177, 74);
+    transition: .3s all ease-out;
+}
+
+.blogs-section .card .card-body hr {
+    width: 70px;
+}
+
+.blogs-section .card img {
+    border-radius: 0;
+}
+
+.blogs-section .blogs-load-more {
+    display: flex;
+    justify-content: center;
+    padding-top: 90px;
+}
+
+.blogs-section .blogs-load-more button {
+    border: none;
+    background-color: #000;
+    color: #fff;
+    padding: 8px 32px;
+    transition: .3s all ease-in;
+}
+
+.blogs-section .blogs-load-more button:hover {
+    background-color: rgb(220, 177, 74);
+    transition: .3s all ease-out;
+}

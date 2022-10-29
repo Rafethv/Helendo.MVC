@@ -7,4 +7,9 @@
     <RootNamespace>Helendo_Back</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\" />
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
 </Project>

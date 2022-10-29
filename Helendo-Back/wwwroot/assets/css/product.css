@@ -1,0 +1,225 @@
+.header {
+    background-color: #fff;
+}
+
+.product-title-section {
+    width: 100%;
+    padding: 80px 0;
+    margin-top: 80px;
+    background-color: rgb(244, 245, 247);
+}
+
+.product-title-section .product-title-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-title-section .product-title__header {
+    width: 50%;
+}
+
+.product-title-section .product-title__navigation {
+    width: 50%;
+    display: flex;
+
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
+.product-title-section .product-title-container ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+}
+
+.product-title-section .product-title-container ul li a {
+    text-decoration: none;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.product-title-section .product-title-container ul li a::after {
+    content: "/";
+    padding: 15px;
+}
+
+.product-title-section .product-title-container ul li span {
+    color: rgb(119, 119, 119);
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+
+.sorting {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+}
+
+.sorting .srt {
+    display: flex;
+}
+
+.sorting .srt a {
+    margin-left: 9px;
+    font-weight: 600;
+}
+
+.sorting .srt p {
+    font-weight: 600;
+}
+
+.b-card {
+    margin-bottom: 10px;
+    border: none !important;
+}
+
+.b-card .product-image {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+    overflow: hidden;
+    transition: .3s all ease-in;
+}
+
+.b-card .product-image .product-shadow-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 400px;
+    transition: .3s all ease-in;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.b-card .product-image .product-shadow-container button {
+    border: none;
+    background-color: #fff;
+    width: 50px;
+    height: 50px;
+    margin: 0 5px;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: .3s all ease-in;
+
+}
+
+.b-card .product-image .product-shadow-container button:hover i {
+    color: rgb(168, 168, 37);
+    transition: .3s all ease-out;
+
+}
+
+.b-card .product-image:hover .product-shadow-container {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    transition: .3s all ease-in;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.b-card .product-image .product-shadow-container:hover {
+    top: 0;
+    transition: .3s all ease-in;
+
+
+}
+
+.card-text-hover {
+    transition: 0.3s all ease-in-out;
+    font-weight: 600;
+
+}
+
+.card-text-hover:hover {
+    cursor: pointer;
+    color: rgb(168, 168, 37);
+}
+
+.b-card img {
+    object-fit: cover;
+}
+
+.cent {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-price {
+    color: gray;
+}
+
+.pagination {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination button {
+    border: none;
+    margin: 5px;
+    padding: 5px 18px;
+}
+
+.pagination .active-btn {
+    background-color: #DCB14A;
+}
+
+.dropbtn {
+    border: none;
+    text-decoration: none;
+    color: gray;
+    cursor: pointer;
+}
+
+.dropbtn:hover {
+    color: black;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    margin: 0;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: 0.1s all ease-in-out;
+}
+
+.dropdown-content a:hover {
+    color: black;
+
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}

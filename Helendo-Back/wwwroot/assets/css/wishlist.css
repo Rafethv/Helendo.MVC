@@ -1,0 +1,147 @@
+.header {
+    background-color: #fff;
+}
+
+.wishlist-title-section {
+    width: 100%;
+    padding: 80px 0;
+    margin-top: 80px;
+    background-color: rgb(244, 245, 247);
+}
+
+.wishlist-title-section .wishlist-title-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.wishlist-title-section .wishlist-title__header {
+    width: 50%;
+}
+
+.wishlist-title-section .wishlist-title__navigation {
+    width: 50%;
+    display: flex;
+
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.wishlist-title-section .wishlist-title-container ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+}
+
+.wishlist-title-section .wishlist-title-container ul li a {
+    text-decoration: none;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.wishlist-title-section .wishlist-title-container ul li a::after {
+    content: "/";
+    padding: 15px;
+}
+
+.wishlist-title-section .wishlist-title-container ul li span {
+    color: rgb(119, 119, 119);
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.wishlist-table {
+    width: 100%;
+}
+
+.wishlist-product-section {
+    padding: 90px 0 45px 0;
+}
+
+.wishlist-table thead {
+    background-color: rgb(244, 245, 247);
+}
+
+.wishlist-table thead .table-product-name {
+    padding: 12px 1px 12px 100px;
+}
+
+.wishlist-table thead .table-product-add {
+    opacity: 0;
+}
+
+.wishlist-table thead .table-product-remove {
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    margin: -1px;
+    white-space: nowrap;
+}
+
+.wishlist-table tbody .product-name {
+    padding: 16px 25px 16px 1px;
+    display: flex;
+    align-items: center;
+}
+
+.wishlist-table tbody {
+    border-bottom: 1px solid rgb(119, 119, 119);
+}
+
+.wishlist-table tbody .product-name img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-right: 18px;
+}
+
+.wishlist-table tbody .product-name a {
+    font-size: 14px;
+    text-decoration: none;
+    color: #000;
+    transition: .3s all ease-in;
+}
+
+.wishlist-table tbody .product-name a:hover {
+    color: rgb(168, 168, 37);
+    transition: .3s all ease-out;
+
+}
+
+.wishlist-table tbody .product-add button {
+    border: none;
+    background-color: #000;
+    color: #fff;
+    padding: 8px 16px;
+}
+
+.wishlist-table tbody .product-remove button {
+    border: none;
+    background-color: transparent;
+}
+
+.wishlist-clear-section {
+    padding-bottom: 90px; 
+}
+
+.wishlist-clear-section .wishlist-clear-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.wishlist-clear-section .wishlist-clear-container button {
+    background-color: #fff;
+    color: #000;
+    padding: 8px 32px;
+    transition: .3s all ease-in;
+    border: 1px solid #000;
+}
+
+.wishlist-clear-section .wishlist-clear-container button:hover {
+    background-color: #000;
+    color: #fff;
+    transition: .3s all ease-out;
+}

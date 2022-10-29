@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Helendo-Back/1.0.0": {
+        "runtime": {
+          "Helendo-Back.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Helendo-Back/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
