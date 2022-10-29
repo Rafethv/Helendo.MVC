@@ -10,7 +10,7 @@
             <hr>
             <p> Many desktop publishing packages and web page editors now use <br> Lorem Ipsum as their default
                 model text</p>
-            <a href="#">Shop Now <i class="fa-solid fa-arrow-right"></i></a>
+            <a asp-controller="Product" asp-action="Index">Shop Now <i class="fa-solid fa-arrow-right"></i></a>
         </div>
     </div>
 </section>
@@ -22,11 +22,11 @@
             </div>
             <div class="nancychair-content">
                 <span>Featured Product</span>
-                <h2><a href="#" class="shop-text-link">Nancy Chair</a></h2>
+                <h2><a asp-controller="Product" asp-action="Detail" class="shop-text-link">Nancy Chair</a></h2>
                 <hr>
                 <p>When an unknown printer took a galley of type and scrambled it to make a type specimen book.
                     Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
-                <a href="#" class="shop-link-button">
+                <a asp-controller="Product" asp-action="Detail" class="shop-link-button">
                     Only 90$ <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </div>
@@ -38,11 +38,11 @@
         <div class="woodpine-container d-flex justify-content-between">
             <div class="woodpine-content">
                 <span>Featured Product</span>
-                <h2><a href="#" class="shop-text-link">Table Wood Pine</a></h2>
+                <h2><a asp-controller="Product" asp-action="Detail" class="shop-text-link">Table Wood Pine</a></h2>
                 <hr>
                 <p>When an unknown printer took a galley of type and scrambled it to make a type specimen book.
                     Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
-                <a href="#" class="shop-link-button">
+                <a asp-controller="Product" asp-action="Detail" class="shop-link-button">
                     Only 50$ <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </div>
@@ -60,11 +60,11 @@
             </div>
             <div class="artdeco-content">
                 <span>Featured Product</span>
-                <h2><a href="#" class="shop-text-link">Art Deco Home</a></h2>
+                <h2><a asp-controller="Product" asp-action="Detail" class="shop-text-link">Art Deco Home</a></h2>
                 <hr>
                 <p>Many desktop publishing packages and web page editors now use
                     Lorem Ipsum as their default model text, and a search for.</p>
-                <a href="#" class="shop-link-button">
+                <a asp-controller="Product" asp-action="Detail" class="shop-link-button">
                     Only 30$ <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </div>
@@ -83,38 +83,38 @@
                         <div class="swiper">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
-                                    <a href="#">
+                                    <a asp-controller="Product" asp-action="Detail">
                                         <img src="~/assets/images/slider-first.jpg">
                                     </a>
                                     <div class="product-content">
-                                        <h3><a href="#">Art Deco Home</a></h3>
+                                        <h3><a asp-controller="Product" asp-action="Detail">Art Deco Home</a></h3>
                                         <span>$30.00</span>
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
-                                    <a href="#">
+                                    <a asp-controller="Product" asp-action="Detail">
                                         <img src="~/assets/images/slider-second.jpg">
                                     </a>
                                     <div class="product-content">
-                                        <h3><a href="#">Art Deco Home</a></h3>
+                                        <h3><a asp-controller="Product" asp-action="Detail">Art Deco Home</a></h3>
                                         <span>$30.00</span>
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
-                                    <a href="#">
+                                    <a asp-controller="Product" asp-action="Detail">
                                         <img src="~/assets/images/slider-fourth.jpg">
                                     </a>
                                     <div class="product-content">
-                                        <h3><a href="#">Art Deco Home</a></h3>
+                                        <h3><a asp-controller="Product" asp-action="Detail">Art Deco Home</a></h3>
                                         <span>$30.00</span>
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
-                                    <a href="#">
+                                    <a asp-controller="Product" asp-action="Detail">
                                         <img src="~/assets/images/slider-fifth.jpg">
                                     </a>
                                     <div class="product-content">
-                                        <h3><a href="#">Art Deco Home</a></h3>
+                                        <h3><a asp-controller="Product" asp-action="Detail">Art Deco Home</a></h3>
                                         <span>$30.00</span>
                                     </div>
                                 </div>
@@ -133,32 +133,32 @@
         </div>
         <div class="blog-blogs">
             <div class="card" style="width: 26rem;">
-                <a href="#">
+                <a asp-controller="Blog" asp-action="Detail">
                     <img class="card-img-top" src="~/assets/images/blog-1.jpg" alt="Card image cap">
                 </a>
                 <div class="card-body">
-                    <h5 class="card-text"><a href="#">Unique products that will impress your home in 2022.</a>
+                    <h5 class="card-text"><a asp-controller="Blog" asp-action="Detail">Unique products that will impress your home in 2022.</a>
                     </h5>
                     <hr>
                     <span>November 27, 2023</span>
                 </div>
             </div>
             <div class="card" style="width: 26rem;">
-                <a href="#">
+                <a asp-controller="Blog" asp-action="Detail">
                     <img class="card-img-top" src="~/assets/images/blog-2.jpg" alt="Card image cap">
                 </a>
                 <div class="card-body">
-                    <h5 class="card-text"><a href="#">Navy Blue & White Striped Area Rugs</a></h5>
+                    <h5 class="card-text"><a asp-controller="Blog" asp-action="Detail">Navy Blue & White Striped Area Rugs</a></h5>
                     <hr>
                     <span>November 27, 2023</span>
                 </div>
             </div>
             <div class="card" style="width: 26rem;">
-                <a href="#">
+                <a asp-controller="Blog" asp-action="Detail">
                     <img class="card-img-top" src="~/assets/images/blog-3.jpg" alt="Card image cap">
                 </a>
                 <div class="card-body">
-                    <h5 class="card-text"><a href="#">Helendo White Coated Staircase Floating</a></h5>
+                    <h5 class="card-text"><a asp-controller="Blog" asp-action="Detail">Helendo White Coated Staircase Floating</a></h5>
                     <hr>
                     <span>November 27, 2023</span>
                 </div>

@@ -133,10 +133,11 @@
 
 }
 
-.card-text-hover {
+.card-body .card-text-hover {
     transition: 0.3s all ease-in-out;
     font-weight: 600;
-
+    text-decoration: none;
+    color: #000;
 }
 
 .card-text-hover:hover {
