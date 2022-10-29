@@ -1,5 +1,5 @@
 using DAL.Data;
-using DAL.Identity;
+using Entity.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
