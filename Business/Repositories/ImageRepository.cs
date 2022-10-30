@@ -13,27 +13,27 @@ public class ImageRepository : IImageService
         _imageDal = imageDal;   
     }
 
-    public Task Create(Image entity)
+    public Task CreateAsync(Image entity)
     {
         throw new NotImplementedException();
     }
 
-    public Task Delete(int id)
+    public Task DeleteAsync(int id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<Image> Get(int id)
+    public Task<Image> GetAsync(int id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<List<Image>> GetAll()
+    public Task<List<Image>> GetAllAsync()
     {
         throw new NotImplementedException();
     }
 
-    public Task Update(int id, Image entity)
+    public Task UpdateAsync(int id, Image entity)
     {
         throw new NotImplementedException();
     }

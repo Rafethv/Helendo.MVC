@@ -12,27 +12,27 @@ public class TagRepository : ITagService
         _tagService = tagService;
     }
 
-    public Task Create(Tag entity)
+    public Task CreateAsync(Tag entity)
     {
         throw new NotImplementedException();
     }
 
-    public Task Delete(int id)
+    public Task DeleteAsync(int id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<Tag> Get(int id)
+    public Task<Tag> GetAsync(int id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<List<Tag>> GetAll()
+    public Task<List<Tag>> GetAllAsync()
     {
         throw new NotImplementedException();
     }
 
-    public Task Update(int id, Tag entity)
+    public Task UpdateAsync(int id, Tag entity)
     {
         throw new NotImplementedException();
     }

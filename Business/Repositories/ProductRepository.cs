@@ -13,27 +13,27 @@ public class ProductRepository : IProductService
         _productDal = productDal;
     }
 
-    public Task Create(Product entity)
+    public Task CreateAsync(Product entity)
     {
         throw new NotImplementedException();
     }
 
-    public Task Delete(int id)
+    public Task DeleteAsync(int id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<Product> Get(int id)
+    public Task<Product> GetAsync(int id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<List<Product>> GetAll()
+    public Task<List<Product>> GetAllAsync()
     {
         throw new NotImplementedException();
     }
 
-    public Task Update(int id, Product entity)
+    public Task UpdateAsync(int id, Product entity)
     {
         throw new NotImplementedException();
     }

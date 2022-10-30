@@ -13,27 +13,27 @@ public class CategoryRepository : ICategoryService
         _categoryDal = categoryDal;
     }
 
-    public Task Create(Category entity)
+    public Task CreateAsync(Category entity)
     {
         throw new NotImplementedException();
     }
 
-    public Task Delete(int id)
+    public Task DeleteAsync(int id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<Category> Get(int id)
+    public Task<Category> GetAsync(int id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<List<Category>> GetAll()
+    public Task<List<Category>> GetAllAsync()
     {
         throw new NotImplementedException();
     }
 
-    public Task Update(int id, Category entity)
+    public Task UpdateAsync(int id, Category entity)
     {
         throw new NotImplementedException();
     }

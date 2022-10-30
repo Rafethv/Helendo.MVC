@@ -12,27 +12,27 @@ public class WishlistRepository : IWishlistService
         _wishlistService = wishlistService;
     }
 
-    public Task Create(Wishlist entity)
+    public Task CreateAsync(Wishlist entity)
     {
         throw new NotImplementedException();
     }
 
-    public Task Delete(int id)
+    public Task DeleteAsync(int id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<Wishlist> Get(int id)
+    public Task<Wishlist> GetAsync(int id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<List<Wishlist>> GetAll()
+    public Task<List<Wishlist>> GetAllAsync()
     {
         throw new NotImplementedException();
     }
 
-    public Task Update(int id, Wishlist entity)
+    public Task UpdateAsync(int id, Wishlist entity)
     {
         throw new NotImplementedException();
     }

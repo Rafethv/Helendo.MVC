@@ -13,27 +13,27 @@ public class ProductDetailRepository : IProductDetailService
         _productDetailDal = productDetailDal;
     }
 
-    public Task Create(ProductDetail entity)
+    public Task CreateAsync(ProductDetail entity)
     {
         throw new NotImplementedException();
     }
 
-    public Task Delete(int id)
+    public Task DeleteAsync(int id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ProductDetail> Get(int id)
+    public Task<ProductDetail> GetAsync(int id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<List<ProductDetail>> GetAll()
+    public Task<List<ProductDetail>> GetAllAsync()
     {
         throw new NotImplementedException();
     }
 
-    public Task Update(int id, ProductDetail entity)
+    public Task UpdateAsync(int id, ProductDetail entity)
     {
         throw new NotImplementedException();
     }

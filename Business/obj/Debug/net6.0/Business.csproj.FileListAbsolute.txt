@@ -10,3 +10,10 @@ C:\Users\Rafet\Desktop\Helendo-Back\Business\obj\Debug\net6.0\Business.dll
 C:\Users\Rafet\Desktop\Helendo-Back\Business\obj\Debug\net6.0\refint\Business.dll
 C:\Users\Rafet\Desktop\Helendo-Back\Business\obj\Debug\net6.0\Business.pdb
 C:\Users\Rafet\Desktop\Helendo-Back\Business\obj\Debug\net6.0\ref\Business.dll
+C:\Users\Rafet\Desktop\Helendo-Back\Business\bin\Debug\net6.0\Core.dll
+C:\Users\Rafet\Desktop\Helendo-Back\Business\bin\Debug\net6.0\DAL.dll
+C:\Users\Rafet\Desktop\Helendo-Back\Business\bin\Debug\net6.0\Entity.dll
+C:\Users\Rafet\Desktop\Helendo-Back\Business\bin\Debug\net6.0\DAL.pdb
+C:\Users\Rafet\Desktop\Helendo-Back\Business\bin\Debug\net6.0\Entity.pdb
+C:\Users\Rafet\Desktop\Helendo-Back\Business\bin\Debug\net6.0\Core.pdb
+C:\Users\Rafet\Desktop\Helendo-Back\Business\obj\Debug\net6.0\Business.csproj.CopyComplete

@@ -697,6 +697,20 @@
           }
         }
       },
+      "Business/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "DAL": "1.0.0",
+          "Entity": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Business.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Business.dll": {}
+        }
+      },
       "Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -2051,6 +2065,11 @@
         "version.txt"
       ]
     },
+    "Business/1.0.0": {
+      "type": "project",
+      "path": "../Business/Business.csproj",
+      "msbuildProject": "../Business/Business.csproj"
+    },
     "Core/1.0.0": {
       "type": "project",
       "path": "../Core/Core.csproj",
@@ -2069,6 +2088,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "Business >= 1.0.0",
       "DAL >= 1.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.9",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.9"
@@ -2101,6 +2121,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "C:\\Users\\Rafet\\Desktop\\Helendo-Back\\Business\\Business.csproj": {
+              "projectPath": "C:\\Users\\Rafet\\Desktop\\Helendo-Back\\Business\\Business.csproj"
+            },
             "C:\\Users\\Rafet\\Desktop\\Helendo-Back\\DAL\\DAL.csproj": {
               "projectPath": "C:\\Users\\Rafet\\Desktop\\Helendo-Back\\DAL\\DAL.csproj"
             }

@@ -13,27 +13,27 @@ public class SubCategoryRepository : ISubCategoryService
         _subCategoryDal = subCategoryDal;
     }
 
-    public Task Create(SubCategory entity)
+    public Task CreateAsync(SubCategory entity)
     {
         throw new NotImplementedException();
     }
 
-    public Task Delete(int id)
+    public Task DeleteAsync(int id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<SubCategory> Get(int id)
+    public Task<SubCategory> GetAsync(int id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<List<SubCategory>> GetAll()
+    public Task<List<SubCategory>> GetAllAsync()
     {
         throw new NotImplementedException();
     }
 
-    public Task Update(int id, SubCategory entity)
+    public Task UpdateAsync(int id, SubCategory entity)
     {
         throw new NotImplementedException();
     }

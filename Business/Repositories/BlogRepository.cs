@@ -13,27 +13,27 @@ public class BlogRepository : IBlogService
         _blogDal = blogDal;
     }
 
-    public Task Create(Blog entity)
+    public Task CreateAsync(Blog entity)
     {
         throw new NotImplementedException();
     }
 
-    public Task Delete(int id)
+    public Task DeleteAsync(int id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<Blog> Get(int id)
+    public Task<Blog> GetAsync(int id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<List<Blog>> GetAll()
+    public Task<List<Blog>> GetAllAsync()
     {
         throw new NotImplementedException();
     }
 
-    public Task Update(int id, Blog entity)
+    public Task UpdateAsync(int id, Blog entity)
     {
         throw new NotImplementedException();
     }

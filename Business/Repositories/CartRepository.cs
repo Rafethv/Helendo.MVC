@@ -13,27 +13,27 @@ public class CartRepository : ICartService
         _cartDal = cartDal;
     }
 
-    public Task Create(Cart entity)
+    public Task CreateAsync(Cart entity)
     {
         throw new NotImplementedException();
     }
 
-    public Task Delete(int id)
+    public Task DeleteAsync(int id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<Cart> Get(int id)
+    public Task<Cart> GetAsync(int id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<List<Cart>> GetAll()
+    public Task<List<Cart>> GetAllAsync()
     {
         throw new NotImplementedException();
     }
 
-    public Task Update(int id, Cart entity)
+    public Task UpdateAsync(int id, Cart entity)
     {
         throw new NotImplementedException();
     }
