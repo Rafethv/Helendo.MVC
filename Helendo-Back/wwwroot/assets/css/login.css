@@ -93,6 +93,11 @@
     flex-direction: column;
 }
 
+.login-section .login-container .login-inputs .form {
+    display: flex;
+    flex-direction: column;
+}
+
 .login-section .login-container .login-inputs .forgot-password {
     margin-bottom: 25px;
     display: flex;

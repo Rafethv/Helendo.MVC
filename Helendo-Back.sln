@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helendo-Back", "Helendo-Back\Helendo-Back.csproj", "{DC7CE1DE-BA26-4636-A38F-56E6F75A61DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helendo-Back", "Helendo-Back\Helendo-Back.csproj", "{DC7CE1DE-BA26-4636-A38F-56E6F75A61DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{4D27706E-5BC2-4687-A7C1-A46D7E39493D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Business.csproj", "{4D27706E-5BC2-4687-A7C1-A46D7E39493D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{D94FD153-A9B2-4B9D-875B-1F04DEBD6146}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{D94FD153-A9B2-4B9D-875B-1F04DEBD6146}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{6ED2A5FA-D9B6-4C13-A14B-A7C3A418DC6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{6ED2A5FA-D9B6-4C13-A14B-A7C3A418DC6C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exceptions", "Exceptions\Exceptions.csproj", "{73CEF3BC-4B54-4D5D-B51C-B543B2A0D578}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exceptions", "Exceptions\Exceptions.csproj", "{73CEF3BC-4B54-4D5D-B51C-B543B2A0D578}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity", "Entity\Entity.csproj", "{70420645-97BB-4D9A-9FB8-547EEE160DE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entity", "Entity\Entity.csproj", "{70420645-97BB-4D9A-9FB8-547EEE160DE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "Utilities\Utilities.csproj", "{2689D162-3F11-45BA-BF59-F1EBE9CE49D5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{70420645-97BB-4D9A-9FB8-547EEE160DE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70420645-97BB-4D9A-9FB8-547EEE160DE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70420645-97BB-4D9A-9FB8-547EEE160DE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2689D162-3F11-45BA-BF59-F1EBE9CE49D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2689D162-3F11-45BA-BF59-F1EBE9CE49D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2689D162-3F11-45BA-BF59-F1EBE9CE49D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2689D162-3F11-45BA-BF59-F1EBE9CE49D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ApAb7rU1xHmOfzJeoaaCTwtizxU1ZsPmxlyqS43jVnQ=",
+  "Hash": "++SWN1+6r+3oJgDFnaCpqKvGTVZEcZw3gd7tpiTXLe8=",
   "Source": "Helendo-Back",
   "BasePath": "_content/Helendo-Back",
   "Mode": "Default",
@@ -2548,6 +2548,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\js\\menu-sidebar.js"
+    },
+    {
+      "Identity": "C:\\Users\\Rafet\\Desktop\\Helendo-Back\\Helendo-Back\\wwwroot\\assets\\uploads\\images\\no-profile.jpg",
+      "SourceId": "Helendo-Back",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Rafet\\Desktop\\Helendo-Back\\Helendo-Back\\wwwroot\\",
+      "BasePath": "_content/Helendo-Back",
+      "RelativePath": "assets/uploads/images/no-profile.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\uploads\\images\\no-profile.jpg"
     }
   ]
 }

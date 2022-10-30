@@ -90,7 +90,11 @@
 .register-section .register-container .register-inputs {
     display: flex;
     flex-direction: column;
+}
 
+.register-section .register-container .register-inputs .form {
+    display: flex;
+    flex-direction: column;
 }
 
 .register-section .register-container .register-inputs h3 {

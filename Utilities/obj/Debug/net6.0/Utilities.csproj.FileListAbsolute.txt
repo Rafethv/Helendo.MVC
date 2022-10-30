@@ -1,0 +1,12 @@
+C:\Users\Rafet\Desktop\Helendo-Back\Utilities\bin\Debug\net6.0\Utilities.deps.json
+C:\Users\Rafet\Desktop\Helendo-Back\Utilities\bin\Debug\net6.0\Utilities.dll
+C:\Users\Rafet\Desktop\Helendo-Back\Utilities\bin\Debug\net6.0\Utilities.pdb
+C:\Users\Rafet\Desktop\Helendo-Back\Utilities\obj\Debug\net6.0\Utilities.csproj.AssemblyReference.cache
+C:\Users\Rafet\Desktop\Helendo-Back\Utilities\obj\Debug\net6.0\Utilities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rafet\Desktop\Helendo-Back\Utilities\obj\Debug\net6.0\Utilities.AssemblyInfoInputs.cache
+C:\Users\Rafet\Desktop\Helendo-Back\Utilities\obj\Debug\net6.0\Utilities.AssemblyInfo.cs
+C:\Users\Rafet\Desktop\Helendo-Back\Utilities\obj\Debug\net6.0\Utilities.csproj.CoreCompileInputs.cache
+C:\Users\Rafet\Desktop\Helendo-Back\Utilities\obj\Debug\net6.0\Utilities.dll
+C:\Users\Rafet\Desktop\Helendo-Back\Utilities\obj\Debug\net6.0\refint\Utilities.dll
+C:\Users\Rafet\Desktop\Helendo-Back\Utilities\obj\Debug\net6.0\Utilities.pdb
+C:\Users\Rafet\Desktop\Helendo-Back\Utilities\obj\Debug\net6.0\ref\Utilities.dll

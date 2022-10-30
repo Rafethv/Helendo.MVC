@@ -1,15 +1,16 @@
 ﻿using Business.Services;
+using DAL.Abstracts;
 using Entity.Model;
 
 namespace Business.Repositories;
 
 public class WishlistRepository : IWishlistService
 {
-    private readonly IWishlistService _wishlistService;
+    private readonly IWishlistDal _wishlistDal;
 
-    public WishlistRepository(IWishlistService wishlistService)
+    public WishlistRepository(IWishlistDal wishlistDal)
     {
-        _wishlistService = wishlistService;
+        _wishlistDal = wishlistDal;
     }
 
     public Task CreateAsync(Wishlist entity)

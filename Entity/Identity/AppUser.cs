@@ -8,7 +8,7 @@ public class AppUser : IdentityUser
 
     public string? Firstname { get; set; }
     public string? Lastname { get; set; }
-    public int ImageId { get; set; }
+    public int? ImageId { get; set; }
     public Image? Image { get; set; }
 
     public ICollection<Blog>? Blogs { get; set; }

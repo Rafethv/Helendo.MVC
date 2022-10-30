@@ -752,6 +752,16 @@
         "runtime": {
           "bin/placeholder/Entity.dll": {}
         }
+      },
+      "Utilities/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Utilities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Utilities.dll": {}
+        }
       }
     }
   },
@@ -2084,6 +2094,11 @@
       "type": "project",
       "path": "../Entity/Entity.csproj",
       "msbuildProject": "../Entity/Entity.csproj"
+    },
+    "Utilities/1.0.0": {
+      "type": "project",
+      "path": "../Utilities/Utilities.csproj",
+      "msbuildProject": "../Utilities/Utilities.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2091,7 +2106,8 @@
       "Business >= 1.0.0",
       "DAL >= 1.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.9",
-      "Microsoft.EntityFrameworkCore.Tools >= 6.0.9"
+      "Microsoft.EntityFrameworkCore.Tools >= 6.0.9",
+      "Utilities >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -2126,6 +2142,9 @@
             },
             "C:\\Users\\Rafet\\Desktop\\Helendo-Back\\DAL\\DAL.csproj": {
               "projectPath": "C:\\Users\\Rafet\\Desktop\\Helendo-Back\\DAL\\DAL.csproj"
+            },
+            "C:\\Users\\Rafet\\Desktop\\Helendo-Back\\Utilities\\Utilities.csproj": {
+              "projectPath": "C:\\Users\\Rafet\\Desktop\\Helendo-Back\\Utilities\\Utilities.csproj"
             }
           }
         }

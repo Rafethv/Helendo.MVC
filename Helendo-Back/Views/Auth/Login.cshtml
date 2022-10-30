@@ -1,4 +1,6 @@
-﻿<section class="login-title-section">
+﻿@model LoginVM
+
+<section class="login-title-section">
     <div class="container">
         <div class="login-title-container">
             <div class="login-title__header">
@@ -22,12 +24,14 @@
             </ul>
             <div class="login-inputs">
                 <h3>Login your account</h3>
-                <input placeholder="Username" type="text">
-                <input placeholder="Password" type="password">
-                <div class="forgot-password">
-                    <a href="#">Lost your password?</a>
-                </div>
-                <button type="button">Login</button>
+                <form class="form" method="post" style="display:flex; flex-direction:column;">
+                   <input asp-for="Username" placeholder="Username*">
+                   <input asp-for="Password" placeholder="Password*">
+                    <div class="forgot-password">
+                        <a href="#">Lost your password?</a>
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
             </div>
         </div>
     </div>

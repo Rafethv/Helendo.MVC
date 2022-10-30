@@ -1,15 +1,16 @@
 ﻿using Business.Services;
+using DAL.Abstracts;
 using Entity.Model;
 
 namespace Business.Repositories;
 
 public class TagRepository : ITagService
 {
-    private readonly ITagService _tagService;
+    private readonly ITagDal _tagDal;
 
-    public TagRepository(ITagService tagService)
+    public TagRepository(ITagDal tagDal)
     {
-        _tagService = tagService;
+        _tagDal = tagDal;
     }
 
     public Task CreateAsync(Tag entity)
