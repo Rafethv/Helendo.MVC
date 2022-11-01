@@ -1,5 +1,58 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model Category
+
+<div class="container">
+    <div class="row">
+       <div class="col-lg-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Slider - Table</h4>
+              <div class="table-responsive">
+                <div class="d-flex justify-content-between">
+                    <a class="btn btn-secondary text-white" asp-controller="category" asp-action="index">Go Back</a>
+                </div>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>
+                        SubCategory Name
+                      </th>
+                      <th>
+                        Setting
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                     @if(Model.SubCategories is not null){
+                        @foreach (var subCategory in Model.SubCategories)
+                        {
+                            if(subCategory.IsDeleted == false)
+                            {
+                                <tr>
+                                    <td>
+                                      @subCategory.Name
+                                    </td>
+                                    <td>
+                                        <div class="d-flex">
+                                            <a class="btn btn-warning text-white mx-1" asp-controller="category" asp-action="updatesubcategory" asp-route-id="@subCategory.Id">Update</a>
+                                            <a class="btn btn-danger text-white mx-1" asp-controller="category" asp-action="deletesubcategory" asp-route-id="@subCategory.Id">Delete</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                                    }
+                                }else
+                                {
+                                    <tr>
+                                        <td>
+                                            <p>This category has not any subcategory</p>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>

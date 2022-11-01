@@ -16,18 +16,11 @@ public class EFRepositoryBase<TEntity, TContext> : IEFRepositoryBase<TEntity>
         _context = context;
     }
 
-    public async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>>? expression = null, int? skip = 0, params string[] includes)
+    public async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>>? expression = null, params string[] includes)
     {
         var query = expression == null ?
             _context.Set<TEntity>() :
             _context.Set<TEntity>().Where(expression);
-
-        var data = await query.FirstOrDefaultAsync();
-
-        if (skip is not null)
-        {
-            query.Skip((int)skip);
-        }
 
         if (includes is not null)
         {
@@ -36,6 +29,8 @@ public class EFRepositoryBase<TEntity, TContext> : IEFRepositoryBase<TEntity>
                 query = query.Include(include);
             }
         }
+
+        var data = await query.FirstOrDefaultAsync();
 
 #pragma warning disable CS8603 // Possible null reference return.
         return data;

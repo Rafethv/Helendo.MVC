@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "XHvLtkU9crD+wEm1h5ASG/QfuGRm5xB+VDL0RD9Er0YrNFZ0LbBpLrlSghoK+xQoAKCKaBcSzvrbQyHu6uygQQ==",
+  "dgSpecHash": "Pb98xUkzsVLo/IApvze5I7C1adKG/LLa9i139Uv3997i+1gHR6ilhGkW2+63bkqzj66Jz2rWHQypQLOM2ROL5w==",
   "success": true,
   "projectFilePath": "C:\\Users\\Rafet\\Desktop\\Helendo-Back\\Core\\Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Rafet\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.9\\microsoft.aspnetcore.cryptography.internal.6.0.9.nupkg.sha512",
     "C:\\Users\\Rafet\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.9\\microsoft.aspnetcore.cryptography.keyderivation.6.0.9.nupkg.sha512",
+    "C:\\Users\\Rafet\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.16\\microsoft.aspnetcore.http.features.5.0.16.nupkg.sha512",
     "C:\\Users\\Rafet\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\6.0.9\\microsoft.aspnetcore.identity.entityframeworkcore.6.0.9.nupkg.sha512",
     "C:\\Users\\Rafet\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.9\\microsoft.entityframeworkcore.6.0.9.nupkg.sha512",
     "C:\\Users\\Rafet\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.9\\microsoft.entityframeworkcore.abstractions.6.0.9.nupkg.sha512",
@@ -24,6 +25,7 @@
     "C:\\Users\\Rafet\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "C:\\Users\\Rafet\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\Rafet\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
+    "C:\\Users\\Rafet\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512",
     "C:\\Users\\Rafet\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
   ],
   "logs": []

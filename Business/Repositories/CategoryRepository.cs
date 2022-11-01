@@ -1,6 +1,7 @@
 ﻿using Business.Services;
 using DAL.Abstracts;
 using Entity.Model;
+using Exceptions.Entity;
 
 namespace Business.Repositories;
 
@@ -13,28 +14,41 @@ public class CategoryRepository : ICategoryService
         _categoryDal = categoryDal;
     }
 
-    public Task CreateAsync(Category entity)
+    public async Task<Category> GetAsync(int id)
     {
-        throw new NotImplementedException();
+        Category category = await _categoryDal.GetAsync(c => c.Id == id, "SubCategories");
+        if (category is null) throw new EntityIsNullException();
+        return category;
     }
 
-    public Task DeleteAsync(int id)
+    public async Task<List<Category>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        List<Category> categories = await _categoryDal.GetAllAsync(c => !c.IsDeleted, 0, int.MaxValue, "SubCategories");
+        if(categories is null) throw new EntityIsNullException();
+        return categories;
     }
 
-    public Task<Category> GetAsync(int id)
+    public async Task CreateAsync(Category entity)
     {
-        throw new NotImplementedException();
+        await _categoryDal.CreateAsync(entity);
     }
 
-    public Task<List<Category>> GetAllAsync()
+    public async Task UpdateAsync(int id, Category entity)
     {
-        throw new NotImplementedException();
+        Category category = await _categoryDal.GetAsync(c => c.Id == id);
+        category.UpdateDate = DateTime.UtcNow.AddHours(4);
+        category.Name = entity.Name.Trim();
+        if (entity.SubCategories is not null)
+        {
+            category.SubCategories = entity.SubCategories;
+        }
+        await _categoryDal.UpdateAsync(category);
     }
 
-    public Task UpdateAsync(int id, Category entity)
+    public async Task DeleteAsync(int id)
     {
-        throw new NotImplementedException();
+        Category category = await _categoryDal.GetAsync(c => c.Id == id);
+        if(category is null) throw new EntityIsNullException();
+        await _categoryDal.DeleteAsync(category);
     }
 }

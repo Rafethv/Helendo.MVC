@@ -34,7 +34,7 @@ namespace DAL.Migrations
 
                     b.HasIndex("ImagesId");
 
-                    b.ToTable("BlogImage", (string)null);
+                    b.ToTable("BlogImage");
                 });
 
             modelBuilder.Entity("CartProduct", b =>
@@ -49,10 +49,10 @@ namespace DAL.Migrations
 
                     b.HasIndex("ProductsId");
 
-                    b.ToTable("CartProduct", (string)null);
+                    b.ToTable("CartProduct");
                 });
 
-            modelBuilder.Entity("DAL.Identity.AppUser", b =>
+            modelBuilder.Entity("Entity.Identity.AppUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -77,7 +77,7 @@ namespace DAL.Migrations
                     b.Property<string>("Firstname")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ImageId")
+                    b.Property<int?>("ImageId")
                         .HasColumnType("int");
 
                     b.Property<string>("Lastname")
@@ -125,7 +125,8 @@ namespace DAL.Migrations
                         .IsUnique();
 
                     b.HasIndex("ImageId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[ImageId] IS NOT NULL");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -141,7 +142,7 @@ namespace DAL.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("DAL.Model.Blog", b =>
+            modelBuilder.Entity("Entity.Model.Blog", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -177,10 +178,10 @@ namespace DAL.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Blogs", (string)null);
+                    b.ToTable("Blogs");
                 });
 
-            modelBuilder.Entity("DAL.Model.BlogDetail", b =>
+            modelBuilder.Entity("Entity.Model.BlogDetail", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -202,10 +203,10 @@ namespace DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("BlogDetails", (string)null);
+                    b.ToTable("BlogDetails");
                 });
 
-            modelBuilder.Entity("DAL.Model.Cart", b =>
+            modelBuilder.Entity("Entity.Model.Cart", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -227,10 +228,10 @@ namespace DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Carts", (string)null);
+                    b.ToTable("Carts");
                 });
 
-            modelBuilder.Entity("DAL.Model.Category", b =>
+            modelBuilder.Entity("Entity.Model.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -252,10 +253,10 @@ namespace DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("DAL.Model.Image", b =>
+            modelBuilder.Entity("Entity.Model.Image", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -271,10 +272,10 @@ namespace DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Images", (string)null);
+                    b.ToTable("Images");
                 });
 
-            modelBuilder.Entity("DAL.Model.Product", b =>
+            modelBuilder.Entity("Entity.Model.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -310,10 +311,10 @@ namespace DAL.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("DAL.Model.ProductDetail", b =>
+            modelBuilder.Entity("Entity.Model.ProductDetail", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -338,10 +339,10 @@ namespace DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ProductDetails", (string)null);
+                    b.ToTable("ProductDetails");
                 });
 
-            modelBuilder.Entity("DAL.Model.SubCategory", b =>
+            modelBuilder.Entity("Entity.Model.SubCategory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -368,10 +369,10 @@ namespace DAL.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("SubCategories", (string)null);
+                    b.ToTable("SubCategories");
                 });
 
-            modelBuilder.Entity("DAL.Model.Tag", b =>
+            modelBuilder.Entity("Entity.Model.Tag", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -398,10 +399,10 @@ namespace DAL.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Tag", (string)null);
+                    b.ToTable("Tag");
                 });
 
-            modelBuilder.Entity("DAL.Model.Wishlist", b =>
+            modelBuilder.Entity("Entity.Model.Wishlist", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -420,7 +421,7 @@ namespace DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Wishlists", (string)null);
+                    b.ToTable("Wishlists");
                 });
 
             modelBuilder.Entity("ImageProduct", b =>
@@ -435,7 +436,7 @@ namespace DAL.Migrations
 
                     b.HasIndex("ProductsId");
 
-                    b.ToTable("ImageProduct", (string)null);
+                    b.ToTable("ImageProduct");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -583,7 +584,7 @@ namespace DAL.Migrations
 
                     b.HasIndex("SubCategoriesId");
 
-                    b.ToTable("ProductSubCategory", (string)null);
+                    b.ToTable("ProductSubCategory");
                 });
 
             modelBuilder.Entity("ProductWishlist", b =>
@@ -598,18 +599,18 @@ namespace DAL.Migrations
 
                     b.HasIndex("WishlistsId");
 
-                    b.ToTable("ProductWishlist", (string)null);
+                    b.ToTable("ProductWishlist");
                 });
 
             modelBuilder.Entity("BlogImage", b =>
                 {
-                    b.HasOne("DAL.Model.Blog", null)
+                    b.HasOne("Entity.Model.Blog", null)
                         .WithMany()
                         .HasForeignKey("BlogsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DAL.Model.Image", null)
+                    b.HasOne("Entity.Model.Image", null)
                         .WithMany()
                         .HasForeignKey("ImagesId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -618,36 +619,34 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("CartProduct", b =>
                 {
-                    b.HasOne("DAL.Model.Cart", null)
+                    b.HasOne("Entity.Model.Cart", null)
                         .WithMany()
                         .HasForeignKey("BasketsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DAL.Model.Product", null)
+                    b.HasOne("Entity.Model.Product", null)
                         .WithMany()
                         .HasForeignKey("ProductsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("DAL.Identity.AppUser", b =>
+            modelBuilder.Entity("Entity.Identity.AppUser", b =>
                 {
-                    b.HasOne("DAL.Model.Cart", "Cart")
+                    b.HasOne("Entity.Model.Cart", "Cart")
                         .WithOne("User")
-                        .HasForeignKey("DAL.Identity.AppUser", "CartId")
+                        .HasForeignKey("Entity.Identity.AppUser", "CartId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DAL.Model.Image", "Image")
+                    b.HasOne("Entity.Model.Image", "Image")
                         .WithOne("User")
-                        .HasForeignKey("DAL.Identity.AppUser", "ImageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("Entity.Identity.AppUser", "ImageId");
 
-                    b.HasOne("DAL.Model.Wishlist", "Wishlist")
+                    b.HasOne("Entity.Model.Wishlist", "Wishlist")
                         .WithOne("User")
-                        .HasForeignKey("DAL.Identity.AppUser", "WishlistId")
+                        .HasForeignKey("Entity.Identity.AppUser", "WishlistId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -658,15 +657,15 @@ namespace DAL.Migrations
                     b.Navigation("Wishlist");
                 });
 
-            modelBuilder.Entity("DAL.Model.Blog", b =>
+            modelBuilder.Entity("Entity.Model.Blog", b =>
                 {
-                    b.HasOne("DAL.Model.BlogDetail", "BlogDetail")
+                    b.HasOne("Entity.Model.BlogDetail", "BlogDetail")
                         .WithOne("Blog")
-                        .HasForeignKey("DAL.Model.Blog", "BlogDetailId")
+                        .HasForeignKey("Entity.Model.Blog", "BlogDetailId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DAL.Identity.AppUser", "User")
+                    b.HasOne("Entity.Identity.AppUser", "User")
                         .WithMany("Blogs")
                         .HasForeignKey("UserId");
 
@@ -675,15 +674,15 @@ namespace DAL.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("DAL.Model.Product", b =>
+            modelBuilder.Entity("Entity.Model.Product", b =>
                 {
-                    b.HasOne("DAL.Model.ProductDetail", "ProductDetail")
+                    b.HasOne("Entity.Model.ProductDetail", "ProductDetail")
                         .WithOne("Product")
-                        .HasForeignKey("DAL.Model.Product", "ProductDetailId")
+                        .HasForeignKey("Entity.Model.Product", "ProductDetailId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DAL.Identity.AppUser", "User")
+                    b.HasOne("Entity.Identity.AppUser", "User")
                         .WithMany("Products")
                         .HasForeignKey("UserId");
 
@@ -692,18 +691,18 @@ namespace DAL.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("DAL.Model.SubCategory", b =>
+            modelBuilder.Entity("Entity.Model.SubCategory", b =>
                 {
-                    b.HasOne("DAL.Model.Category", "Category")
+                    b.HasOne("Entity.Model.Category", "Category")
                         .WithMany("SubCategories")
                         .HasForeignKey("CategoryId");
 
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("DAL.Model.Tag", b =>
+            modelBuilder.Entity("Entity.Model.Tag", b =>
                 {
-                    b.HasOne("DAL.Model.Product", "Product")
+                    b.HasOne("Entity.Model.Product", "Product")
                         .WithMany("Tags")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -714,13 +713,13 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("ImageProduct", b =>
                 {
-                    b.HasOne("DAL.Model.Image", null)
+                    b.HasOne("Entity.Model.Image", null)
                         .WithMany()
                         .HasForeignKey("ImagesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DAL.Model.Product", null)
+                    b.HasOne("Entity.Model.Product", null)
                         .WithMany()
                         .HasForeignKey("ProductsId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -738,7 +737,7 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("DAL.Identity.AppUser", null)
+                    b.HasOne("Entity.Identity.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -747,7 +746,7 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("DAL.Identity.AppUser", null)
+                    b.HasOne("Entity.Identity.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -762,7 +761,7 @@ namespace DAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DAL.Identity.AppUser", null)
+                    b.HasOne("Entity.Identity.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -771,7 +770,7 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("DAL.Identity.AppUser", null)
+                    b.HasOne("Entity.Identity.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -780,13 +779,13 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("ProductSubCategory", b =>
                 {
-                    b.HasOne("DAL.Model.Product", null)
+                    b.HasOne("Entity.Model.Product", null)
                         .WithMany()
                         .HasForeignKey("ProductsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DAL.Model.SubCategory", null)
+                    b.HasOne("Entity.Model.SubCategory", null)
                         .WithMany()
                         .HasForeignKey("SubCategoriesId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -795,57 +794,57 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("ProductWishlist", b =>
                 {
-                    b.HasOne("DAL.Model.Product", null)
+                    b.HasOne("Entity.Model.Product", null)
                         .WithMany()
                         .HasForeignKey("ProductsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DAL.Model.Wishlist", null)
+                    b.HasOne("Entity.Model.Wishlist", null)
                         .WithMany()
                         .HasForeignKey("WishlistsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("DAL.Identity.AppUser", b =>
+            modelBuilder.Entity("Entity.Identity.AppUser", b =>
                 {
                     b.Navigation("Blogs");
 
                     b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("DAL.Model.BlogDetail", b =>
+            modelBuilder.Entity("Entity.Model.BlogDetail", b =>
                 {
                     b.Navigation("Blog");
                 });
 
-            modelBuilder.Entity("DAL.Model.Cart", b =>
+            modelBuilder.Entity("Entity.Model.Cart", b =>
                 {
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("DAL.Model.Category", b =>
+            modelBuilder.Entity("Entity.Model.Category", b =>
                 {
                     b.Navigation("SubCategories");
                 });
 
-            modelBuilder.Entity("DAL.Model.Image", b =>
+            modelBuilder.Entity("Entity.Model.Image", b =>
                 {
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("DAL.Model.Product", b =>
+            modelBuilder.Entity("Entity.Model.Product", b =>
                 {
                     b.Navigation("Tags");
                 });
 
-            modelBuilder.Entity("DAL.Model.ProductDetail", b =>
+            modelBuilder.Entity("Entity.Model.ProductDetail", b =>
                 {
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("DAL.Model.Wishlist", b =>
+            modelBuilder.Entity("Entity.Model.Wishlist", b =>
                 {
                     b.Navigation("User");
                 });

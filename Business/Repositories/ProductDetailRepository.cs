@@ -1,6 +1,7 @@
 ﻿using Business.Services;
 using DAL.Abstracts;
 using Entity.Model;
+using Exceptions.Entity;
 
 namespace Business.Repositories;
 
@@ -13,22 +14,21 @@ public class ProductDetailRepository : IProductDetailService
         _productDetailDal = productDetailDal;
     }
 
+    public async Task<ProductDetail> GetAsync(int id)
+    {
+        ProductDetail productDetail = await _productDetailDal.GetAsync(pd => pd.Id == id, "Product");
+        if (productDetail is null) throw new EntityIsNullException();
+        return productDetail;
+    }
+
+    public async Task<List<ProductDetail>> GetAllAsync()
+    {
+        List<ProductDetail> productDetails = await _productDetailDal.GetAllAsync(pd => !pd.IsDeleted, 0, int.MaxValue, "Product");
+        if(productDetails is null) throw new EntityIsNullException();
+        return productDetails;
+    }
+
     public Task CreateAsync(ProductDetail entity)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task DeleteAsync(int id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<ProductDetail> GetAsync(int id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<List<ProductDetail>> GetAllAsync()
     {
         throw new NotImplementedException();
     }
@@ -36,5 +36,12 @@ public class ProductDetailRepository : IProductDetailService
     public Task UpdateAsync(int id, ProductDetail entity)
     {
         throw new NotImplementedException();
+    }
+
+    public async Task DeleteAsync(int id)
+    {
+        ProductDetail productDetail = await _productDetailDal.GetAsync(pd => pd.Id == id);
+        if(productDetail is null) throw new EntityIsNullException();
+        await _productDetailDal.DeleteAsync(productDetail);
     }
 }

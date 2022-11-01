@@ -191,7 +191,7 @@ namespace Helendo_Back.Controllers
             return Json("Ok");
         }
 
-        public async Task<ActionResult> LogOut()
+        public async Task<IActionResult> LogOut()
         {
             if (User.Identity.IsAuthenticated)
             {

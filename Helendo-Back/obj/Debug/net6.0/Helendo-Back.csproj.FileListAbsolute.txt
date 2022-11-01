@@ -72,3 +72,5 @@ C:\Users\Rafet\Desktop\Helendo-Back\Helendo-Back\bin\Debug\net6.0\Business.dll
 C:\Users\Rafet\Desktop\Helendo-Back\Helendo-Back\bin\Debug\net6.0\Business.pdb
 C:\Users\Rafet\Desktop\Helendo-Back\Helendo-Back\bin\Debug\net6.0\Utilities.dll
 C:\Users\Rafet\Desktop\Helendo-Back\Helendo-Back\bin\Debug\net6.0\Utilities.pdb
+C:\Users\Rafet\Desktop\Helendo-Back\Helendo-Back\bin\Debug\net6.0\Exceptions.dll
+C:\Users\Rafet\Desktop\Helendo-Back\Helendo-Back\bin\Debug\net6.0\Exceptions.pdb

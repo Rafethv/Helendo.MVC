@@ -54,6 +54,7 @@ builder.Services.AddScoped<IWishlistDal, WishlistRepositoryDal>();
 
 var app = builder.Build();
 
+
 app.UseStaticFiles();
 
 app.UseRouting();
