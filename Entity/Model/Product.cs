@@ -1,6 +1,8 @@
 ﻿using Entity.Base;
 using Entity.Entity;
 using Entity.Identity;
+using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Entity.Model;
 
@@ -12,6 +14,13 @@ public class Product : BaseEntity, IEntity
     public AppUser? User { get; set; }
     public int ProductDetailId { get; set; }
     public ProductDetail? ProductDetail { get; set; }
+
+    [NotMapped]
+    public IFormFile? MainFile { get; set; }
+
+    [NotMapped]
+    public List<IFormFile>? ImageFile { get; set; }
+
     public ICollection<Wishlist>? Wishlists { get; set; }
     public ICollection<Image>? Images { get; set; }
     public ICollection<Cart>? Baskets { get; set; }

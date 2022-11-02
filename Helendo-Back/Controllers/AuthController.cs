@@ -125,7 +125,6 @@ namespace Helendo_Back.Controllers
             appUser.UserName = RegisterVM.Username;
             appUser.Cart = basket;
             appUser.Wishlist = wishlist;
-            appUser.ImageId = 1;
 
 
             var result = await _userManager.CreateAsync(appUser, RegisterVM.Password);

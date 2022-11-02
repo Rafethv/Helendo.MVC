@@ -1,10 +1,11 @@
 ﻿using Business.Services;
 using Entity.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Helendo_Back.Areas.Admin.Controllers;
 
-[Area("admin")]
+[Area("admin"), Authorize(Roles = "Admin,SuperAdmin")]
 public class CategoryController : Controller
 {
     private readonly ICategoryService _categoryService;

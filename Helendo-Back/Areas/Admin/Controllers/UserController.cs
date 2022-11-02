@@ -1,12 +1,13 @@
 ﻿using Business.ViewModels;
 using Entity.Identity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Helendo_Back.Areas.Admin.Controllers
 {
-    [Area("admin")]
+    [Area("admin"), Authorize(Roles = "SuperAdmin")]
     public class UserController : Controller
     {
         private readonly UserManager<AppUser> _userManager;

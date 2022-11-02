@@ -1,10 +1,11 @@
 ﻿using Business.Services;
 using Entity.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Helendo_Back.Areas.Admin.Controllers
 {
-    [Area("admin")]
+    [Area("admin"), Authorize(Roles = "Admin,SuperAdmin")]
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
