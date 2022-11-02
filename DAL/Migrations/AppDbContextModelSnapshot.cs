@@ -34,7 +34,7 @@ namespace DAL.Migrations
 
                     b.HasIndex("ImagesId");
 
-                    b.ToTable("BlogImage");
+                    b.ToTable("BlogImage", (string)null);
                 });
 
             modelBuilder.Entity("CartProduct", b =>
@@ -49,7 +49,7 @@ namespace DAL.Migrations
 
                     b.HasIndex("ProductsId");
 
-                    b.ToTable("CartProduct");
+                    b.ToTable("CartProduct", (string)null);
                 });
 
             modelBuilder.Entity("Entity.Identity.AppUser", b =>
@@ -178,7 +178,7 @@ namespace DAL.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Blogs");
+                    b.ToTable("Blogs", (string)null);
                 });
 
             modelBuilder.Entity("Entity.Model.BlogDetail", b =>
@@ -203,7 +203,7 @@ namespace DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("BlogDetails");
+                    b.ToTable("BlogDetails", (string)null);
                 });
 
             modelBuilder.Entity("Entity.Model.Cart", b =>
@@ -228,7 +228,7 @@ namespace DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Carts");
+                    b.ToTable("Carts", (string)null);
                 });
 
             modelBuilder.Entity("Entity.Model.Category", b =>
@@ -253,7 +253,7 @@ namespace DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("Entity.Model.Image", b =>
@@ -272,7 +272,7 @@ namespace DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Images");
+                    b.ToTable("Images", (string)null);
                 });
 
             modelBuilder.Entity("Entity.Model.Product", b =>
@@ -311,7 +311,7 @@ namespace DAL.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("Entity.Model.ProductDetail", b =>
@@ -339,7 +339,7 @@ namespace DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ProductDetails");
+                    b.ToTable("ProductDetails", (string)null);
                 });
 
             modelBuilder.Entity("Entity.Model.SubCategory", b =>
@@ -369,7 +369,7 @@ namespace DAL.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("SubCategories");
+                    b.ToTable("SubCategories", (string)null);
                 });
 
             modelBuilder.Entity("Entity.Model.Tag", b =>
@@ -399,7 +399,7 @@ namespace DAL.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Tag");
+                    b.ToTable("Tag", (string)null);
                 });
 
             modelBuilder.Entity("Entity.Model.Wishlist", b =>
@@ -421,7 +421,7 @@ namespace DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Wishlists");
+                    b.ToTable("Wishlists", (string)null);
                 });
 
             modelBuilder.Entity("ImageProduct", b =>
@@ -436,7 +436,7 @@ namespace DAL.Migrations
 
                     b.HasIndex("ProductsId");
 
-                    b.ToTable("ImageProduct");
+                    b.ToTable("ImageProduct", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -584,7 +584,7 @@ namespace DAL.Migrations
 
                     b.HasIndex("SubCategoriesId");
 
-                    b.ToTable("ProductSubCategory");
+                    b.ToTable("ProductSubCategory", (string)null);
                 });
 
             modelBuilder.Entity("ProductWishlist", b =>
@@ -599,7 +599,7 @@ namespace DAL.Migrations
 
                     b.HasIndex("WishlistsId");
 
-                    b.ToTable("ProductWishlist");
+                    b.ToTable("ProductWishlist", (string)null);
                 });
 
             modelBuilder.Entity("BlogImage", b =>

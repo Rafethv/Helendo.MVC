@@ -19,8 +19,8 @@ public class EFRepositoryBase<TEntity, TContext> : IEFRepositoryBase<TEntity>
     public async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>>? expression = null, params string[] includes)
     {
         var query = expression == null ?
-            _context.Set<TEntity>() :
-            _context.Set<TEntity>().Where(expression);
+            _context.Set<TEntity>().AsNoTracking() :
+            _context.Set<TEntity>().Where(expression).AsNoTracking();
 
         if (includes is not null)
         {

@@ -1,6 +1,8 @@
 ﻿using Business.Services;
+using Entity.Identity;
 using Entity.Model;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Helendo_Back.Areas.Admin.Controllers
@@ -9,10 +11,16 @@ namespace Helendo_Back.Areas.Admin.Controllers
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
+        private readonly UserManager<AppUser> _userManager;
+        private readonly IWebHostEnvironment _env;
+        private readonly ISubCategoryService _subCategoryService;
 
-        public ProductController(IProductService productService)
+        public ProductController(IProductService productService, IWebHostEnvironment env, UserManager<AppUser> userManager, ISubCategoryService subCategoryService)
         {
             _productService = productService;
+            _env = env;
+            _userManager = userManager;
+            _subCategoryService = subCategoryService;
         }
 
         public async Task<IActionResult> Index()
@@ -48,9 +56,36 @@ namespace Helendo_Back.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            ViewData["SubCategories"] = await _subCategoryService.GetAllAsync();
+
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Product entity)
+        {
+            if (entity.ImageFile is null)
+            {
+                ModelState.AddModelError("ImageFile", "Image can not be empty");
+                return View(entity);
+            }
+
+            AppUser applicationUser = await _userManager.GetUserAsync(User);
+
+            entity.User = applicationUser;
+
+            try
+            {
+                await _productService.CreateAsync(entity);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         [HttpGet]
@@ -59,6 +94,41 @@ namespace Helendo_Back.Areas.Admin.Controllers
             Product product = await _productService.GetAsync(id);
 
             return View(model: product);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Update(int id, Product entity)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(entity);
+            }
+
+            try
+            {
+                await _productService.CreateAsync(entity);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                await _productService.DeleteAsync(id);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return View(nameof(Index));
         }
     }
 }

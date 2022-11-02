@@ -58,6 +58,7 @@ namespace Helendo_Back.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Blog entity)
         {
             if (entity.ImageFile is null)
@@ -70,17 +71,58 @@ namespace Helendo_Back.Areas.Admin.Controllers
 
             entity.User = applicationUser;
 
-            await _blogService.CreateAsync(entity);
-
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                await _blogService.CreateAsync(entity);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
-            [HttpGet]
+        [HttpGet]
         public async Task<IActionResult> Update(int id)
         {
             Blog blog = await _blogService.GetAsync(id);
 
             return View(model: blog);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Update(int id, Blog entity)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(entity);
+            }
+
+            try
+            {
+                await _blogService.UpdateAsync(id, entity);
+                return RedirectToAction(nameof(Index));
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                await _blogService.DeleteAsync(id);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }

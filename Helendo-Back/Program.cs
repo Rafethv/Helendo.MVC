@@ -55,13 +55,14 @@ builder.Services.AddScoped<IWishlistDal, WishlistRepositoryDal>();
 var app = builder.Build();
 
 
-app.UseStaticFiles();
 
 app.UseRouting();
 
 app.UseAuthentication();
 
 app.UseAuthorization();
+
+app.UseStaticFiles();
 
 app.MapRazorPages();
 

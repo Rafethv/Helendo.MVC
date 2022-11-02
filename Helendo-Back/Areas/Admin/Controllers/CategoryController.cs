@@ -92,7 +92,14 @@ public class CategoryController : Controller
 
     public async Task<IActionResult> Delete(int id)
     {
-        await _categoryService.DeleteAsync(id);
+        try
+        {
+            await _categoryService.DeleteAsync(id);
+        }
+        catch (Exception)
+        {
+            throw;
+        }
 
         return RedirectToAction(nameof(Index));
     }
@@ -127,9 +134,15 @@ public class CategoryController : Controller
 
         entity.Category = category;
 
-        await _subCategoryService.CreateAsync(entity);
-
-        return RedirectToAction(nameof(Index));
+        try
+        {
+            await _subCategoryService.CreateAsync(entity);
+            return RedirectToAction(nameof(Index));
+        }
+        catch (Exception)
+        {
+            throw;
+        }
     }
 
     [HttpGet]
@@ -149,15 +162,28 @@ public class CategoryController : Controller
             return View(subCategory);
         }
 
-        await _subCategoryService.UpdateAsync(id, subCategory);
-
-        return RedirectToAction(nameof(Index));
+        try
+        {
+            await _subCategoryService.UpdateAsync(id, subCategory);
+            return RedirectToAction(nameof(Index));
+        }
+        catch (Exception)
+        {
+            throw;
+        }
     }
 
     public async Task<IActionResult> DeleteSubCategory(int id)
     {
-        await _subCategoryService.DeleteAsync(id);
+        try
+        {
+            await _subCategoryService.DeleteAsync(id);
+            return RedirectToAction(nameof(Index));
+        }
+        catch (Exception)
+        {
 
-        return RedirectToAction(nameof(Index));
+            throw;
+        }
     }
 }

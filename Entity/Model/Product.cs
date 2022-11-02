@@ -25,5 +25,5 @@ public class Product : BaseEntity, IEntity
     public ICollection<Image>? Images { get; set; }
     public ICollection<Cart>? Baskets { get; set; }
     public ICollection<Tag>? Tags { get; set; }
-    public List<SubCategory>? SubCategories { get; set; }
+    public ICollection<SubCategory>? SubCategories { get; set; }
 }
