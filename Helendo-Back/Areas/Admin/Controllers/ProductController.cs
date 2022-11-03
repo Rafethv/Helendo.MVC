@@ -92,6 +92,7 @@ namespace Helendo_Back.Areas.Admin.Controllers
         public async Task<IActionResult> Update(int id)
         {
             Product product = await _productService.GetAsync(id);
+            ViewData["SubCategories"] = await _subCategoryService.GetAllAsync();
 
             return View(model: product);
         }
@@ -107,7 +108,7 @@ namespace Helendo_Back.Areas.Admin.Controllers
 
             try
             {
-                await _productService.CreateAsync(entity);
+                await _productService.UpdateAsync(id, entity);
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception)
@@ -128,7 +129,7 @@ namespace Helendo_Back.Areas.Admin.Controllers
                 throw;
             }
 
-            return View(nameof(Index));
+            return RedirectToAction(nameof(Index));
         }
     }
 }

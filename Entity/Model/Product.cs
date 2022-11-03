@@ -26,4 +26,7 @@ public class Product : BaseEntity, IEntity
     public ICollection<Cart>? Baskets { get; set; }
     public ICollection<Tag>? Tags { get; set; }
     public ICollection<SubCategory>? SubCategories { get; set; }
+
+    [NotMapped]
+    public List<int>? SubCategoryIds { get; set; }
 }

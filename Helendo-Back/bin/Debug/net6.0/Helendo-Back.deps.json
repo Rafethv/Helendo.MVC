@@ -504,7 +504,8 @@
           "DAL": "1.0.0",
           "Entity": "1.0.0",
           "Exceptions": "1.0.0",
-          "Microsoft.AspNetCore.Http.Features": "5.0.16"
+          "Microsoft.AspNetCore.Http.Features": "5.0.16",
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.9"
         },
         "runtime": {
           "Business.dll": {}
@@ -532,7 +533,8 @@
       "Entity/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Http.Features": "5.0.16",
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.9"
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.9",
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.9"
         },
         "runtime": {
           "Entity.dll": {}

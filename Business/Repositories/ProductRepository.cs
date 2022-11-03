@@ -10,26 +10,30 @@ namespace Business.Repositories;
 public class ProductRepository : IProductService
 {
     private readonly IProductDal _productDal;
+    private readonly ISubCategoryDal _subCategoryDal;
+    private readonly IProductDetailDal _productDetailDal;
     private readonly IWebHostEnvironment _env;
     private readonly IImageDal _imageDal;
 
-    public ProductRepository(IProductDal productDal, IWebHostEnvironment env, IImageDal imageDal)
+    public ProductRepository(IProductDal productDal, IWebHostEnvironment env, IImageDal imageDal, ISubCategoryDal subCategoryDal, IProductDetailDal productDetailDal)
     {
         _productDal = productDal;
         _env = env;
         _imageDal = imageDal;
+        _subCategoryDal = subCategoryDal;
+        _productDetailDal = productDetailDal;
     }
 
     public async Task<Product> GetAsync(int id)
     {
-        Product product = await _productDal.GetAsync(p => p.Id == id, "User.Image", "ProductDetail");
+        Product product = await _productDal.GetAsync(p => p.Id == id, "User.Image", "ProductDetail", "Images", "SubCategories");
         if (product is null) throw new EntityIsNullException();
         return product;
     }
 
     public async Task<List<Product>> GetAllAsync()
     {
-        List<Product> products = await _productDal.GetAllAsync(p => !p.IsDeleted, 0, int.MaxValue, "User.Image", "ProductDetail");
+        List<Product> products = await _productDal.GetAllAsync(p => !p.IsDeleted, 0, int.MaxValue, "User.Image", "ProductDetail", "Images", "SubCategories");
         if(products is null) throw new EntityIsNullException();
         return products;
     }
@@ -46,6 +50,7 @@ public class ProductRepository : IProductService
             image.Url = fileName;
             image.IsMain = false;
             images.Add(image);
+            await _imageDal.CreateAsync(image);
         }
 
         Image mainImage = new();
@@ -53,25 +58,37 @@ public class ProductRepository : IProductService
         mainImage.Url = mainFileName;
         mainImage.IsMain = true;
         images.Add(mainImage);
+        await _imageDal.CreateAsync(mainImage);
 
         entity.Images = images;
 
-        ProductDetail serviceDetail = new()
+        ProductDetail productDetail = new()
         {
             Description = entity.ProductDetail.Description,
             Weight = entity.ProductDetail.Weight,
         };
 
-        entity.ProductDetail = serviceDetail;
-        entity.ProductDetailId = serviceDetail.Id;
+        await _productDetailDal.CreateAsync(productDetail);
+
+        entity.ProductDetailId = productDetail.Id;
+
+        ICollection<SubCategory> subCategories = await _subCategoryDal.GetAllAsync(n => entity.SubCategoryIds.Contains(n.Id), 0, int.MaxValue, "Products");
+
+        entity.SubCategories = subCategories;
 
         await _productDal.CreateAsync(entity);
+
+        foreach (var subCategory in subCategories)
+        {
+            subCategory.Products.Add(entity);
+            await _subCategoryDal.UpdateAsync(subCategory);
+        }
     }
 
     public async Task UpdateAsync(int id, Product entity)
     {
         List<Image> currentImages = new();
-        Product product = await _productDal.GetAsync(p => p.Id == id);
+        Product product = await _productDal.GetAsync(p => p.Id == id, "User.Image", "ProductDetail", "Images", "SubCategories");
 
         if (entity.ImageFile is not null)
         {
@@ -88,10 +105,8 @@ public class ProductRepository : IProductService
                 image.Url = fileName;
                 image.IsMain = false;
                 currentImages.Add(image);
+                await _imageDal.CreateAsync(image);
             }
-
-            var images = product.Images;
-            currentImages.AddRange(images);
         }
         else
         {
@@ -109,6 +124,7 @@ public class ProductRepository : IProductService
             image.Url = fileName;
             image.IsMain = true;
             currentImages.Add(image);
+            await _imageDal.CreateAsync(image);
 
             await _imageDal.DeleteAsync(product.Images.Where(n => n.IsMain == true).FirstOrDefault());
         }
@@ -117,14 +133,40 @@ public class ProductRepository : IProductService
             currentImages.Add(product.Images.Where(n => n.IsMain == true).FirstOrDefault());
         }
 
-        entity.Images = currentImages;
+        ICollection<SubCategory> AllSubCategories = await _subCategoryDal.GetAllAsync(n => !n.IsDeleted, 0, int.MaxValue, "Products");
+
+        ICollection<SubCategory> subCategories = await _subCategoryDal.GetAllAsync(n => entity.SubCategoryIds.Contains(n.Id), 0, int.MaxValue, "Products");
+
+        product.SubCategories = subCategories;
+
+        foreach (var subCategory in AllSubCategories)
+        {
+            if (!subCategory.Products.Select(p => p.Id).Contains(product.Id) && entity.SubCategoryIds.Contains(subCategory.Id))
+            {
+                subCategory.Products.Add(product);
+                await _subCategoryDal.UpdateAsync(subCategory);
+            }
+            else if (subCategory.Products.Select(p => p.Id).Contains(product.Id) && !entity.SubCategoryIds.Contains(subCategory.Id))
+            {
+                subCategory.Products.Remove(product);
+                await _subCategoryDal.UpdateAsync(subCategory);
+            }
+        }
+
+        product.Images = currentImages;
+        product.Title = entity.Title;
+        product.Price = entity.Price;
+        product.ProductDetail.Weight = entity.ProductDetail.Weight;
+        product.ProductDetail.Description = entity.ProductDetail.Description;
+
+        
 
         await _productDal.UpdateAsync(product);
     }
 
     public async Task DeleteAsync(int id)
     {
-        Product product = await _productDal.GetAsync(p => p.Id == id);
+        Product product = await _productDal.GetAsync(p => p.Id == id, "ProductDetail");
         if(product is null) throw new EntityIsNullException();
         await _productDal.DeleteAsync(product);
     }

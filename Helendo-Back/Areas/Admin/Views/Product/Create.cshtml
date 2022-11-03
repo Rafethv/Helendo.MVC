@@ -1,5 +1,9 @@
 ﻿@model Product
 
+@{
+    var subCategories = (List<SubCategory>)ViewData["SubCategories"];
+}
+
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6 grid-margin stretch-card">
@@ -18,11 +22,11 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="Price">Price</label>
-                    <input asp-for="Price" class="form-control" placeholder="Add Price" />
+                    <input asp-for="Price" class="form-control" type="number" placeholder="Add Price" />
                 </div>
                 <div class="form-group">
                     <label asp-for="ProductDetail.Weight">Weight</label>
-                    <input asp-for="ProductDetail.Weight" class="form-control" placeholder="Add Weight" />
+                    <input asp-for="ProductDetail.Weight" class="form-control" type="number" step="0.01" placeholder="Add Weight" />
                 </div>
                 <div class="form-group">
                     <label asp-for="MainFile">Main Image</label>
@@ -31,6 +35,15 @@
                 <div class="form-group">
                     <label asp-for="ImageFile">Image</label>
                     <input accept="image/*" class="form-control" asp-for="ImageFile">
+                </div>
+                <div class="form-group">
+                    <label asp-for="SubCategoryIds">SubCategories</label>
+                    <select asp-for="SubCategoryIds" multiple>
+                        @foreach (var subCategory in subCategories)
+                        {
+                            <option value="@subCategory.Id">@subCategory.Name</option>
+                        }
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary mr-2 text-white">Submit</button>
                 <button asp-controller="product" asp-action="index" class="btn btn-secondary text-white">Cancel</button>

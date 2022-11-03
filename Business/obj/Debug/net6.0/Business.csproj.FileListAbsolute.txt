@@ -19,3 +19,5 @@ C:\Users\Rafet\Desktop\Helendo-Back\Business\bin\Debug\net6.0\Core.pdb
 C:\Users\Rafet\Desktop\Helendo-Back\Business\obj\Debug\net6.0\Business.csproj.CopyComplete
 C:\Users\Rafet\Desktop\Helendo-Back\Business\bin\Debug\net6.0\Exceptions.dll
 C:\Users\Rafet\Desktop\Helendo-Back\Business\bin\Debug\net6.0\Exceptions.pdb
+C:\Users\Rafet\Desktop\Helendo-Back\Business\bin\Debug\net6.0\Business.runtimeconfig.json
+C:\Users\Rafet\Desktop\Helendo-Back\Business\obj\Debug\net6.0\Business.genruntimeconfig.cache
