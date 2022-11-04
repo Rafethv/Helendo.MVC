@@ -23,7 +23,7 @@ public class CategoryRepository : ICategoryService
 
     public async Task<List<Category>> GetAllAsync()
     {
-        List<Category> categories = await _categoryDal.GetAllAsync(c => !c.IsDeleted, 0, int.MaxValue, "SubCategories");
+        List<Category> categories = await _categoryDal.GetAllAsync(c => !c.IsDeleted, "SubCategories");
         if(categories is null) throw new EntityIsNullException();
         return categories;
     }

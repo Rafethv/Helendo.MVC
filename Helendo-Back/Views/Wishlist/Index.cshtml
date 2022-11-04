@@ -13,55 +13,63 @@
         </div>
     </div>
 </section>
+@if (User.Identity.IsAuthenticated)
+{
 <section class="wishlist-product-section">
     <div class="container">
-        <table class="wishlist-table">
-            <thead>
-                <tr>
-                    <th class="table-product-name">Product</th>
-                    <th class="table-product-price">Unit Price</th>
-                    <th class="table-product-add">Add To Cart</th>
-                    <th class="table-product-remove">Item Remove</th>
-                </tr>
-            </thead>
+        
+            <table class="wishlist-table">
+                <thead>
+                    <tr>
+                        <th class="table-product-name">Product</th>
+                        <th class="table-product-price">Unit Price</th>
+                        <th class="table-product-add">Add To Cart</th>
+                        <th class="table-product-remove">Item Remove</th>
+                    </tr>
+                </thead>
 
-            <tbody>
-                <tr>
-                    <td class="product-name">
-                        <a asp-controller="Product" asp-action="Detail">
-                            <img src="https://helendo.jamstacktemplates.dev/images/products/animi-dolor-pariatur/74x74.jpg"
-                                alt="product" />
-                        </a>
-                        <h2><a asp-controller="Product" asp-action="Detail">Animi Dolor Pariatur</a></h2>
-                    </td>
-                    <td class="product-price">$10.00</td>
-                    <td class="product-add"><button type="button">Add To Cart</button></td>
-                    <td class="product-remove"><button type="button"><i class="fa-solid fa-x"></i></button></td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                    <td class="product-name">
-                        <a asp-controller="Product" asp-action="Detail">
-                            <img src="https://helendo.jamstacktemplates.dev/images/products/animi-dolor-pariatur/74x74.jpg"
-                                alt="product" />
-                        </a>
-                        <h2><a asp-controller="Product" asp-action="Detail">Animi Dolor Pariatur</a></h2>
-                    </td>
-                    <td class="product-price">$10.00</td>
-                    <td class="product-add"><button type="button">Add To Cart</button></td>
-                    <td class="product-remove"><button type="button"><i class="fa-solid fa-x"></i></button></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</section>
-<section class="wishlist-clear-section">
-    <div class="container">
-        <div class="wishlist-clear-container">
-            <button type="button">
-                Clear wishlist
-            </button>
-        </div>
-    </div>
-</section>
+                <tbody>
+                    <tr>
+                        <td class="product-name">
+                            <a asp-controller="Product" asp-action="Detail">
+                                <img src="https://helendo.jamstacktemplates.dev/images/products/animi-dolor-pariatur/74x74.jpg"
+                                    alt="product" />
+                            </a>
+                            <h2><a asp-controller="Product" asp-action="Detail">Animi Dolor Pariatur</a></h2>
+                        </td>
+                        <td class="product-price">$10.00</td>
+                        <td class="product-add"><button type="button">Add To Cart</button></td>
+                        <td class="product-remove"><button type="button"><i class="fa-solid fa-x"></i></button></td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td class="product-name">
+                            <a asp-controller="Product" asp-action="Detail">
+                                <img src="https://helendo.jamstacktemplates.dev/images/products/animi-dolor-pariatur/74x74.jpg"
+                                    alt="product" />
+                            </a>
+                            <h2><a asp-controller="Product" asp-action="Detail">Animi Dolor Pariatur</a></h2>
+                        </td>
+                        <td class="product-price">$10.00</td>
+                        <td class="product-add"><button type="button">Add To Cart</button></td>
+                        <td class="product-remove"><button type="button"><i class="fa-solid fa-x"></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </section>
+        <section class="wishlist-clear-section">
+            <div class="container">
+                <div class="wishlist-clear-container">
+                    <button type="button">
+                        Clear wishlist
+                    </button>
+                </div>
+            </div>
+        </section>
+ } else
+ {
+     <p class="my-5 text-center">Please Sign in or Sign up to see your wishlist!</p>
+ }
+    

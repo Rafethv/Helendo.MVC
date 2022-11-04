@@ -31,7 +31,7 @@ public class BlogRepository : IBlogService
 
     public async Task<List<Blog>> GetAllAsync()
     {
-        List<Blog> blogs = await _blogDal.GetAllAsync(b => !b.IsDeleted, 0, int.MaxValue, "User.Image", "BlogDetail", "Images");
+        List<Blog> blogs = await _blogDal.GetAllAsync(b => !b.IsDeleted, "User.Image", "BlogDetail", "Images");
         if (blogs is null) throw new EntityIsNullException();
         return blogs;
     }

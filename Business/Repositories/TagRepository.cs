@@ -23,7 +23,7 @@ public class TagRepository : ITagService
 
     public async Task<List<Tag>> GetAllAsync()
     {
-        List<Tag> tags = await _tagDal.GetAllAsync(t => !t.IsDeleted, 0, int.MaxValue, "Product");
+        List<Tag> tags = await _tagDal.GetAllAsync(t => !t.IsDeleted, "Product");
         if(tags is null) throw new EntityIsNullException();
         return tags;
     }

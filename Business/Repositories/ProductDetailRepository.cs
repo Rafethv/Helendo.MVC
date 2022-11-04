@@ -23,7 +23,7 @@ public class ProductDetailRepository : IProductDetailService
 
     public async Task<List<ProductDetail>> GetAllAsync()
     {
-        List<ProductDetail> productDetails = await _productDetailDal.GetAllAsync(pd => !pd.IsDeleted, 0, int.MaxValue, "Product");
+        List<ProductDetail> productDetails = await _productDetailDal.GetAllAsync(pd => !pd.IsDeleted, "Product");
         if(productDetails is null) throw new EntityIsNullException();
         return productDetails;
     }

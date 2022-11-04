@@ -1,64 +1,36 @@
-﻿<section class="blog-detail-section">
+﻿@model GetBlogDetailVM
+
+<section class="blog-detail-section">
     <div class="container">
         <div class="blog-detail-container">
             <div class="blog-detail__main-image">
-                <img src="https://helendo.jamstacktemplates.dev/images/blogs/striped-rug/1146x745.jpg"
-                    alt="blog-main-image" />
+                @foreach (var blogImage in @Model.Images)
+                {
+                    if(blogImage.IsMain == true)
+                    {
+                        <img src="~/assets/uploads/images/@blogImage.Url" alt="blog-main-image" />
+                    }
+                }
             </div>
             <div class="blog-detail__content">
                 <div class="blog-detail__content-title">
-                    <h2>Navy Blue & White Striped Area Rugs</h2>
-                    <span>/ November 25,2003 /</span>
+                    <h2>@Model.Title</h2>
+                    <span>/ @Model.CreateDate /</span>
                 </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, atque voluptatibus
-                    sapiente, vitae beatae praesentium nulla sed illo, impedit quidem eaque laudantium! Error
-                    est consectetur reiciendis inventore ratione deleniti, voluptatum atque et. Non
-                    reprehenderit, vero, nam in consequatur velit laboriosam error possimus, suscipit dolore ab
-                    soluta eos veritatis nesciunt praesentium unde ducimus repellendus hic dolor illo sequi
-                    culpa inventore. Eaque sequi vel rerum eius odit ex recusandae ea iusto error velit beatae,
-                    atque corrupti voluptatem temporibus quam doloremque obcaecati at excepturi distinctio a
-                    necessitatibus incidunt consequuntur veniam? Impedit facere, rerum doloremque praesentium
-                    facilis quisquam iusto alias pariatur maiores, sint esse molestias minus, cum a ad? Ea sed
-                    quisquam expedita enim ipsam tenetur quis totam aperiam deleniti eos. Maiores itaque culpa
-                    accusantium iure eius rem dignissimos, reiciendis vel quos aspernatur, recusandae rerum,
-                    libero numquam expedita aperiam earum laboriosam quidem. Non odit vel aliquam molestiae
-                    commodi nostrum, quo repudiandae iure veniam perferendis officia exercitationem ab. Sit
-                    nostrum alias officia facere earum est impedit fugiat veniam harum rerum? Similique placeat
-                    aliquid minus soluta, qui reprehenderit aspernatur fugit sapiente quae tenetur autem labore
-                    omnis impedit esse maxime blanditiis perspiciatis quod, itaque voluptatum corrupti hic
-                    reiciendis? Autem aperiam explicabo alias ex itaque tempore voluptates voluptas libero,
-                    blanditiis corrupti recusandae, amet accusantium molestias adipisci corporis culpa enim
-                    possimus, vero vel nulla magnam aliquam quo? Deserunt aliquid assumenda repellendus sed,
-                    odit, nisi iste tenetur numquam recusandae illum quidem id itaque sequi soluta modi dolorem,
-                    perspiciatis magnam maxime corporis delectus unde fugit facilis at? Illo nobis ut ipsum
-                    cupiditate itaque, quo temporibus rerum nihil totam voluptatum voluptatibus corporis
-                    excepturi asperiores ea illum nulla aspernatur facere doloribus, incidunt est distinctio
-                    ratione aliquid deleniti enim. Commodi omnis libero esse et porro tempora officiis magni ab
-                    saepe sint, qui eius vero deserunt fugiat corporis dolor itaque at ipsa, odio dolorem animi
-                    iure ipsam quasi! Sint sed, fuga non laboriosam dolor expedita error ipsa minima delectus
-                    saepe distinctio eum eaque quisquam? Est rem dolorem deserunt aut deleniti praesentium
-                    impedit perspiciatis doloremque nesciunt sapiente, eligendi enim accusantium ipsum esse
-                    voluptatibus possimus natus! Aliquam dolorum expedita molestiae est necessitatibus esse nisi
-                    repudiandae tempore amet facilis sequi fugit quis, debitis qui laudantium! Eius iure maiores
-                    totam corrupti iusto eum sint? Temporibus repudiandae voluptas praesentium sapiente itaque
-                    quidem. Sit quos sed ducimus laudantium facere aut reprehenderit blanditiis magnam ratione
-                    deserunt distinctio quisquam voluptatem rem voluptate soluta, quae ex ipsam consequuntur
-                    perspiciatis atque explicabo, a fugiat. Incidunt.</p>
+                <p>@Model.Content</p>
+                <p class="mx-5 text-end">Author: @Model.Firstname @Model.Lastname</p>
             </div>
             <div class="blog-detail__other-images">
                 <div class="row justify-content-center">
-                    <div class="col-lg-6 my-2">
-                        <img src="https://helendo.jamstacktemplates.dev/images/rich-text/1-570x327.jpg"
-                            alt="blogImage">
-                    </div>
-                    <div class="col-lg-6 my-2">
-                        <img src="https://helendo.jamstacktemplates.dev/images/rich-text/1-570x327.jpg"
-                            alt="blogImage">
-                    </div>
-                    <div class="col-lg-6 my-2">
-                        <img src="https://helendo.jamstacktemplates.dev/images/rich-text/1-570x327.jpg"
-                            alt="blogImage">
-                    </div>
+                    @foreach (var blogImage in @Model.Images)
+                    {
+                        if(blogImage.IsMain == false)
+                        {
+                            <div class="col-lg-4 my-2">
+                                <img src="~/assets/uploads/images/@blogImage.Url" alt="blogImage">
+                            </div>
+                        }
+                    }
                 </div>
             </div>
         </div>

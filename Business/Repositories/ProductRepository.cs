@@ -33,7 +33,7 @@ public class ProductRepository : IProductService
 
     public async Task<List<Product>> GetAllAsync()
     {
-        List<Product> products = await _productDal.GetAllAsync(p => !p.IsDeleted, 0, int.MaxValue, "User.Image", "ProductDetail", "Images", "SubCategories");
+        List<Product> products = await _productDal.GetAllAsync(p => !p.IsDeleted, "User.Image", "ProductDetail", "Images", "SubCategories");
         if(products is null) throw new EntityIsNullException();
         return products;
     }
@@ -72,7 +72,7 @@ public class ProductRepository : IProductService
 
         entity.ProductDetailId = productDetail.Id;
 
-        ICollection<SubCategory> subCategories = await _subCategoryDal.GetAllAsync(n => entity.SubCategoryIds.Contains(n.Id), 0, int.MaxValue, "Products");
+        ICollection<SubCategory> subCategories = await _subCategoryDal.GetAllAsync(n => entity.SubCategoryIds.Contains(n.Id), "Products");
 
         entity.SubCategories = subCategories;
 
@@ -133,9 +133,9 @@ public class ProductRepository : IProductService
             currentImages.Add(product.Images.Where(n => n.IsMain == true).FirstOrDefault());
         }
 
-        ICollection<SubCategory> AllSubCategories = await _subCategoryDal.GetAllAsync(n => !n.IsDeleted, 0, int.MaxValue, "Products");
+        ICollection<SubCategory> AllSubCategories = await _subCategoryDal.GetAllAsync(n => !n.IsDeleted, "Products");
 
-        ICollection<SubCategory> subCategories = await _subCategoryDal.GetAllAsync(n => entity.SubCategoryIds.Contains(n.Id), 0, int.MaxValue, "Products");
+        ICollection<SubCategory> subCategories = await _subCategoryDal.GetAllAsync(n => entity.SubCategoryIds.Contains(n.Id), "Products");
 
         product.SubCategories = subCategories;
 

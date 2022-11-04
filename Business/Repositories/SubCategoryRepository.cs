@@ -23,7 +23,7 @@ public class SubCategoryRepository : ISubCategoryService
 
     public async Task<List<SubCategory>> GetAllAsync()
     {
-        List<SubCategory> subCategories = await _subCategoryDal.GetAllAsync(s => !s.IsDeleted, 0, int.MaxValue, "Category", "Products");
+        List<SubCategory> subCategories = await _subCategoryDal.GetAllAsync(s => !s.IsDeleted, "Category", "Products");
         if(subCategories is null) throw new EntityIsNullException();
         return subCategories;
     }

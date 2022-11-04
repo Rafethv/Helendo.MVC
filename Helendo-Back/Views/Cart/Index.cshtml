@@ -12,8 +12,9 @@
             </div>
         </div>
     </div>
-</section>
-<section class="cart-product-section">
+    </section>
+@if(User.Identity.IsAuthenticated) {
+    <section class="cart-product-section">
     <div class="container">
         <table class="cart-table">
             <thead>
@@ -73,16 +74,16 @@
             </tbody>
         </table>
     </div>
-</section>
-<section class="cart-clear-section">
+    </section>
+    <section class="cart-clear-section">
     <div class="container">
         <div class="cart-clear-container">
             <a asp-controller="Product" asp-action="Index"><i class="fa-solid fa-arrow-left"></i> Continue Shopping</a>
             <button type="button">Clear Cart</button>
         </div>
     </div>
-</section>
-<section class="cart-total-section">
+    </section>
+    <section class="cart-total-section">
     <div class="container d-flex justify-content-end">
         <div class="cart-total-container col-lg-4">
             <div class="cart-total">
@@ -94,4 +95,7 @@
             <button type="button">Proceed to checkout</button>
         </div>
     </div>
-</section>
+    </section>
+}else {
+    <p class="my-5 text-center">Please Sign in or Sign Up to see your Cart!</p>
+}

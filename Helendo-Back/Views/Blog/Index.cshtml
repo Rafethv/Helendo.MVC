@@ -1,4 +1,6 @@
-﻿<section class="blog-title-section">
+﻿@model BlogVM
+
+<section class="blog-title-section">
     <div class="container">
         <div class="blog-title-container">
             <div class="blog-title__header">
@@ -16,118 +18,28 @@
 <section class="blogs-section">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4">
-                <div class="card" style="width: 26rem;">
-                    <a asp-controller="Blog" asp-action="Detail">
-                        <img class="card-img-top" src="~/assets/images/blog-1.jpg" alt="Card image cap">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-text"><a asp-controller="Blog" asp-action="Detail">Unique products that will impress your home in
-                                2022.</a>
-                        </h5>
-                        <hr>
-                        <span>November 27, 2023</span>
+            @foreach (var blog in @Model.Blogs)
+            {
+                <div class="col-lg-4">
+                    <div class="card" style="width: 26rem;">
+                        <a asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id">
+                            @foreach (var blogImage in @blog.Images)
+                            {
+                                if(blogImage.IsMain == true)
+                                {
+                                    <img class="card-img-top" src="~/assets/uploads/images/@blogImage.Url" alt="Card image cap">
+                                }
+                            }
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-text"><a asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id">@blog.Title</a></h5>
+                            <p>@blog.Description</p>
+                            <hr>
+                            <span>@blog.CreateDate</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card" style="width: 26rem;">
-                    <a asp-controller="Blog" asp-action="Detail">
-                        <img class="card-img-top" src="~/assets/images/blog-1.jpg" alt="Card image cap">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-text"><a asp-controller="Blog" asp-action="Detail">Unique products that will impress your home in
-                                2022.</a>
-                        </h5>
-                        <hr>
-                        <span>November 27, 2023</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card" style="width: 26rem;">
-                    <a asp-controller="Blog" asp-action="Detail">
-                        <img class="card-img-top" src="~/assets/images/blog-1.jpg" alt="Card image cap">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-text"><a asp-controller="Blog" asp-action="Detail">Unique products that will impress your home in
-                                2022.</a>
-                        </h5>
-                        <hr>
-                        <span>November 27, 2023</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card" style="width: 26rem;">
-                    <a asp-controller="Blog" asp-action="Detail">
-                        <img class="card-img-top" src="~/assets/images/blog-1.jpg" alt="Card image cap">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-text"><a asp-controller="Blog" asp-action="Detail">Unique products that will impress your home in
-                                2022.</a>
-                        </h5>
-                        <hr>
-                        <span>November 27, 2023</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card" style="width: 26rem;">
-                    <a asp-controller="Blog" asp-action="Detail">
-                        <img class="card-img-top" src="~/assets/images/blog-1.jpg" alt="Card image cap">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-text"><a asp-controller="Blog" asp-action="Detail">Unique products that will impress your home in
-                                2022.</a>
-                        </h5>
-                        <hr>
-                        <span>November 27, 2023</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card" style="width: 26rem;">
-                    <a asp-controller="Blog" asp-action="Detail">
-                        <img class="card-img-top" src="~/assets/images/blog-1.jpg" alt="Card image cap">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-text"><a asp-controller="Blog" asp-action="Detail">Unique products that will impress your home in
-                                2022.</a>
-                        </h5>
-                        <hr>
-                        <span>November 27, 2023</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card" style="width: 26rem;">
-                    <a asp-controller="Blog" asp-action="Detail">
-                        <img class="card-img-top" src="~/assets/images/blog-1.jpg" alt="Card image cap">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-text"><a asp-controller="Blog" asp-action="Detail">Unique products that will impress your home in
-                                2022.</a>
-                        </h5>
-                        <hr>
-                        <span>November 27, 2023</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card" style="width: 26rem;">
-                    <a asp-controller="Blog" asp-action="Detail">
-                        <img class="card-img-top" src="~/assets/images/blog-1.jpg" alt="Card image cap">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-text"><a asp-controller="Blog" asp-action="Detail">Unique products that will impress your home in
-                                2022.</a>
-                        </h5>
-                        <hr>
-                        <span>November 27, 2023</span>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
         <div class="row justify-content-center">
             <div class="blogs-load-more">
