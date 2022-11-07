@@ -41,7 +41,7 @@
                             <select data-userId="@userVm.User.Id" class="form-control role-changer">
                                 @foreach (var role in userVm.AllRoles)
                                 {
-                                     if(role.ToString().ToLower() == userVm.UserRole.FirstOrDefault().ToString().ToLower())
+                                     if(role.ToString().ToLower() == userVm.UserRole?.FirstOrDefault()?.ToString().ToLower())
                                      {
                                          <option selected value='@role.Name'>@role</option>
                                      }else

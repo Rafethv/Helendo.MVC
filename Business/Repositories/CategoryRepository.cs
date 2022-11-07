@@ -37,7 +37,9 @@ public class CategoryRepository : ICategoryService
     {
         Category category = await _categoryDal.GetAsync(c => c.Id == id);
         category.UpdateDate = DateTime.UtcNow.AddHours(4);
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
         category.Name = entity.Name.Trim();
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
         if (entity.SubCategories is not null)
         {
             category.SubCategories = entity.SubCategories;

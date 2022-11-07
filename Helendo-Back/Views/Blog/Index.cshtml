@@ -17,33 +17,13 @@
 </section>
 <section class="blogs-section">
     <div class="container">
-        <div class="row">
-            @foreach (var blog in @Model.Blogs)
-            {
-                <div class="col-lg-4">
-                    <div class="card" style="width: 26rem;">
-                        <a asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id">
-                            @foreach (var blogImage in @blog.Images)
-                            {
-                                if(blogImage.IsMain == true)
-                                {
-                                    <img class="card-img-top" src="~/assets/uploads/images/@blogImage.Url" alt="Card image cap">
-                                }
-                            }
-                        </a>
-                        <div class="card-body">
-                            <h5 class="card-text"><a asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id">@blog.Title</a></h5>
-                            <p>@blog.Description</p>
-                            <hr>
-                            <span>@blog.CreateDate</span>
-                        </div>
-                    </div>
-                </div>
-            }
+        <div class="row" id="blog-container">
+            <partial name="_BlogPartial" />
         </div>
         <div class="row justify-content-center">
-            <div class="blogs-load-more">
-                <button type="button">Load More</button>
+            <div class="pagination">
+                <button page-id="1" class="active-btn blog-page">1</button>
+                <button page-id="2" class="blog-page">2</button>
             </div>
         </div>
     </div>

@@ -14,10 +14,10 @@ public class BlogController : Controller
         _blogService = blogService;
     }
 
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(int page = 1)
     {
         List<GetBlogVM> getBlogVms = new();
-        foreach (var blog in await _blogService.GetAllAsync())
+        foreach (var blog in await _blogService.GetPaginationAsync(page, 6))
         {
             GetBlogVM getBlogVm = new()
             {
@@ -38,10 +38,35 @@ public class BlogController : Controller
         return View(model: blogVm);
     }
 
+    public async Task<IActionResult> Pagination(int page)
+    {
+        List<GetBlogVM> getBlogVms = new();
+        foreach (var blog in await _blogService.GetPaginationAsync(page, 6))
+        {
+            GetBlogVM getBlogVm = new()
+            {
+                Id = blog.Id,
+                Title = blog.Title,
+                Description = blog.Desciption,
+                Images = blog.Images,
+                CreateDate = blog.CreateDate,
+            };
+            getBlogVms.Add(getBlogVm);
+        }
+
+        BlogVM blogVm = new()
+        {
+            Blogs = getBlogVms
+        };
+
+        return PartialView("_BlogPartial", model: blogVm);
+    }
+
     public async Task<IActionResult> Detail(int id)
     {
         Blog blog = await _blogService.GetAsync(id);
 
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
         GetBlogDetailVM getBlogDetailVm = new()
         {
             Title = blog.Title,
@@ -52,6 +77,7 @@ public class BlogController : Controller
             Lastname = blog.User.Lastname,
             Images = blog.Images,
         };
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
         return View(model: getBlogDetailVm);
     }

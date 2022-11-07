@@ -3,4 +3,6 @@ using Entity.Model;
 
 namespace Business.Services;
 
-public interface IProductService : IBaseService<Product> {}
+public interface IProductService : IBaseService<Product> {
+    Task<List<Product>> GetPaginationAsync(int page, int pageSize);
+}

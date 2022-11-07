@@ -9,3 +9,5 @@ menuOpen.addEventListener("click", function () {
 menuClose.addEventListener("click", function () {
     menuModal.classList.remove("active");
 });
+
+

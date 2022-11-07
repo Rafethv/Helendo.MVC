@@ -30,12 +30,14 @@ public class SubCategoryRepository : ISubCategoryService
 
     public async Task CreateAsync(SubCategory entity)
     {
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
         SubCategory subCategory = new()
         {
             Name = entity.Name.Trim(),
             CreateDate = DateTime.UtcNow.AddHours(4),
             Category = entity.Category,
         };
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
         await _subCategoryDal.CreateAsync(subCategory);
     }

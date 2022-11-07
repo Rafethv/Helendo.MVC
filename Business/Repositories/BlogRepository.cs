@@ -36,10 +36,18 @@ public class BlogRepository : IBlogService
         return blogs;
     }
 
+    public async Task<List<Blog>> GetPaginationAsync(int page, int pageSize)
+    {
+        List<Blog> blogs = await _blogDal.PaginationAsync(b => b.CreateDate ,b => !b.IsDeleted, page, pageSize, "User.Image", "BlogDetail", "Images");
+        if (blogs is null) throw new EntityIsNullException();
+        return blogs;
+    }
+
     public async Task CreateAsync(Blog entity)
     {
         List<Image> images = new();
 
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
         foreach (var imageFile in entity.ImageFile)
         {
             string fileName = await imageFile.CreateFile(_env);
@@ -50,21 +58,27 @@ public class BlogRepository : IBlogService
             images.Add(image);
             await _imageDal.CreateAsync(image);
         }
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
         Image mainImage = new();
+#pragma warning disable CS8604 // Possible null reference argument.
         string mainFileName = await entity.MainFile.CreateFile(_env);
+#pragma warning restore CS8604 // Possible null reference argument.
         mainImage.Url = mainFileName;
         mainImage.IsMain = true;
         images.Add(mainImage);
         await _imageDal.CreateAsync(mainImage);
 
         entity.Images = images;
+        entity.CreateDate = DateTime.UtcNow.AddHours(4);
 
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
         BlogDetail blogDetail = new()
         {
             Content = entity.BlogDetail.Content,
             CreateDate = DateTime.UtcNow.AddHours(4),
         };
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
         await _blogDetailDal.CreateAsync(blogDetail);
 
@@ -80,10 +94,12 @@ public class BlogRepository : IBlogService
 
         if (entity.ImageFile is not null)
         {
+#pragma warning disable CS8604 // Possible null reference argument.
             for (int i = 0; i < blog.Images.Where(n => n.IsMain == false).ToList().Count; i++)
             {
                 currentImages.Add(blog.Images.Where(n => n.IsMain == false).ToList()[i]);
             }
+#pragma warning restore CS8604 // Possible null reference argument.
 
             foreach (var imageFile in entity.ImageFile)
             {
@@ -98,10 +114,12 @@ public class BlogRepository : IBlogService
         }
         else
         {
+#pragma warning disable CS8604 // Possible null reference argument.
             for (int i = 0; i < blog.Images.Where(n => n.IsMain == false).ToList().Count; i++)
             {
                 currentImages.Add(blog.Images.Where(n => n.IsMain == false).ToList()[i]);
             }
+#pragma warning restore CS8604 // Possible null reference argument.
         }
 
         if (entity.MainFile is not null)
@@ -114,18 +132,22 @@ public class BlogRepository : IBlogService
             currentImages.Add(image);
             await _imageDal.CreateAsync(image);
 
+#pragma warning disable CS8604 // Possible null reference argument.
             await _imageDal.DeleteAsync(blog.Images.Where(n => n.IsMain == true).FirstOrDefault());
         }
         else
         {
             currentImages.Add(blog.Images.Where(n => n.IsMain == true).FirstOrDefault());
         }
+#pragma warning restore CS8604 // Possible null reference argument.
 
         blog.Images = currentImages;
         blog.Title = entity.Title;
         blog.Desciption = entity.Desciption;
         blog.UpdateDate = DateTime.UtcNow.AddHours(4);
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
         blog.BlogDetail.Content = entity.BlogDetail.Content;
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
         await _blogDal.UpdateAsync(blog);
     }
@@ -136,4 +158,5 @@ public class BlogRepository : IBlogService
         if (blog is null) throw new EntityIsNullException();
         await _blogDal.DeleteAsync(blog);
     }
+
 }

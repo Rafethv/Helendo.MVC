@@ -78,21 +78,11 @@ public class EFRepositoryBase<TEntity, TContext> : IEFRepositoryBase<TEntity>
         await _context.SaveChangesAsync();
     }
 
-    public async Task<List<TEntity>> PaginationAsync(Expression<Func<TEntity, bool>>? expression = null, int? skip = 0, int? take = int.MaxValue, params string[] includes)
+    public async Task<List<TEntity>> PaginationAsync<TOrderBy>(Expression<Func<TEntity, TOrderBy>> orderBy, Expression<Func<TEntity, bool>>? expression = null, int? page = 1, int? pageSize = 6, params string[] includes)
     {
         var query = expression == null ?
-            _context.Set<TEntity>().AsNoTracking() :
-            _context.Set<TEntity>().Where(expression).AsNoTracking();
-
-        if (skip is not null)
-        {
-            query.Skip((int)skip);
-        }
-
-        if (take is not null)
-        {
-            query.Take((int)take);
-        }
+            _context.Set<TEntity>().Skip((int)((page - 1) * pageSize)).Take((int)pageSize).AsNoTracking() :
+            _context.Set<TEntity>().Where(expression).OrderByDescending(orderBy).Skip((int)((page - 1) * pageSize)).Take((int)pageSize).AsNoTracking();
 
         if (includes is not null)
         {

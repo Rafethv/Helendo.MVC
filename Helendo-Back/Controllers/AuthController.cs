@@ -44,10 +44,12 @@ namespace Helendo_Back.Controllers
         [HttpPost(nameof(Login))]
         public async Task<IActionResult> Login(LoginVM LoginVM)
         {
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             if (User.Identity.IsAuthenticated)
             {
                 return Json("Ok");
             }
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
             if (!ModelState.IsValid)
             {
@@ -100,10 +102,12 @@ namespace Helendo_Back.Controllers
         [HttpPost(nameof(Register))]
         public async Task<IActionResult> Register(RegisterVM RegisterVM)
         {
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             if (User.Identity.IsAuthenticated)
             {
                 return Json("Ok");
             }
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
             if (!ModelState.IsValid)
             {
@@ -152,7 +156,9 @@ namespace Helendo_Back.Controllers
             var token = await _userManager.GenerateEmailConfirmationTokenAsync(appUser);
             var confirmationLink = Url.Action("ConfirmEmail", "Auth", new { token, username = appUser.UserName }, HttpContext.Request.Scheme);
 
+            #pragma warning disable CS8604 // Possible null reference argument.
             SendEmail(appUser.Email, confirmationLink);
+            #pragma warning restore CS8604 // Possible null reference argument.
 
             return RedirectToAction("Index", controllerName: "Home");
 
@@ -192,10 +198,12 @@ namespace Helendo_Back.Controllers
 
         public async Task<IActionResult> LogOut()
         {
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             if (User.Identity.IsAuthenticated)
             {
                 await _signInManager.SignOutAsync();
             }
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
             return RedirectToAction("Index", controllerName: "Home");
         }

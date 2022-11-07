@@ -1,6 +1,7 @@
 ﻿using Business.Services;
 using DAL.Abstracts;
 using Entity.Model;
+using Exceptions.Entity;
 
 namespace Business.Repositories;
 
@@ -13,19 +14,11 @@ public class WishlistRepository : IWishlistService
         _wishlistDal = wishlistDal;
     }
 
-    public Task CreateAsync(Wishlist entity)
+    public async Task<Wishlist> GetAsync(int id)
     {
-        throw new NotImplementedException();
-    }
-
-    public Task DeleteAsync(int id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<Wishlist> GetAsync(int id)
-    {
-        throw new NotImplementedException();
+        Wishlist wishlist = await _wishlistDal.GetAsync(n => n.Id == id, "Products", "User");
+        if (wishlist is null) throw new EntityIsNullException();
+        return wishlist;
     }
 
     public Task<List<Wishlist>> GetAllAsync()
@@ -33,7 +26,19 @@ public class WishlistRepository : IWishlistService
         throw new NotImplementedException();
     }
 
-    public Task UpdateAsync(int id, Wishlist entity)
+    public Task CreateAsync(Wishlist entity)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task UpdateAsync(int id, Wishlist entity)
+    {
+        Wishlist wishlist = await _wishlistDal.GetAsync(n => n.Id == id, "Products");
+        wishlist.Products = entity.Products;
+        await _wishlistDal.UpdateAsync(wishlist);
+    }
+
+    public Task DeleteAsync(int id)
     {
         throw new NotImplementedException();
     }

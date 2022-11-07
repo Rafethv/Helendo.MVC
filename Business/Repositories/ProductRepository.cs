@@ -26,7 +26,7 @@ public class ProductRepository : IProductService
 
     public async Task<Product> GetAsync(int id)
     {
-        Product product = await _productDal.GetAsync(p => p.Id == id, "User.Image", "ProductDetail", "Images", "SubCategories");
+        Product product = await _productDal.GetAsync(p => p.Id == id, "User.Image", "ProductDetail", "Images", "SubCategories", "Wishlists");
         if (product is null) throw new EntityIsNullException();
         return product;
     }
@@ -38,10 +38,18 @@ public class ProductRepository : IProductService
         return products;
     }
 
+    public async Task<List<Product>> GetPaginationAsync(int page, int pageSize)
+    {
+        List<Product> products = await _productDal.PaginationAsync(p => p.CreateDate, p => !p.IsDeleted, page, pageSize, "User.Image", "ProductDetail", "Images", "SubCategories");
+        if (products is null) throw new EntityIsNullException();
+        return products;
+    }
+
     public async Task CreateAsync(Product entity)
     {
         List<Image> images = new();
 
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
         foreach (var imageFile in entity.ImageFile)
         {
             string fileName = await imageFile.CreateFile(_env);
@@ -52,9 +60,12 @@ public class ProductRepository : IProductService
             images.Add(image);
             await _imageDal.CreateAsync(image);
         }
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
         Image mainImage = new();
+#pragma warning disable CS8604 // Possible null reference argument.
         string mainFileName = await entity.MainFile.CreateFile(_env);
+#pragma warning restore CS8604 // Possible null reference argument.
         mainImage.Url = mainFileName;
         mainImage.IsMain = true;
         images.Add(mainImage);
@@ -62,17 +73,21 @@ public class ProductRepository : IProductService
 
         entity.Images = images;
 
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
         ProductDetail productDetail = new()
         {
             Description = entity.ProductDetail.Description,
             Weight = entity.ProductDetail.Weight,
         };
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
         await _productDetailDal.CreateAsync(productDetail);
 
         entity.ProductDetailId = productDetail.Id;
 
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
         ICollection<SubCategory> subCategories = await _subCategoryDal.GetAllAsync(n => entity.SubCategoryIds.Contains(n.Id), "Products");
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
         entity.SubCategories = subCategories;
 
@@ -80,7 +95,9 @@ public class ProductRepository : IProductService
 
         foreach (var subCategory in subCategories)
         {
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             subCategory.Products.Add(entity);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             await _subCategoryDal.UpdateAsync(subCategory);
         }
     }
@@ -92,10 +109,12 @@ public class ProductRepository : IProductService
 
         if (entity.ImageFile is not null)
         {
+#pragma warning disable CS8604 // Possible null reference argument.
             for (int i = 0; i < product.Images.Where(n => n.IsMain == false).ToList().Count; i++)
             {
                 currentImages.Add(product.Images.Where(n => n.IsMain == false).ToList()[i]);
             }
+#pragma warning restore CS8604 // Possible null reference argument.
 
             foreach (var imageFile in entity.ImageFile)
             {
@@ -110,10 +129,12 @@ public class ProductRepository : IProductService
         }
         else
         {
+#pragma warning disable CS8604 // Possible null reference argument.
             for (int i = 0; i < product.Images.Where(n => n.IsMain == false).ToList().Count; i++)
             {
                 currentImages.Add(product.Images.Where(n => n.IsMain == false).ToList()[i]);
             }
+#pragma warning restore CS8604 // Possible null reference argument.
         }
 
         if (entity.MainFile is not null)
@@ -126,21 +147,27 @@ public class ProductRepository : IProductService
             currentImages.Add(image);
             await _imageDal.CreateAsync(image);
 
+#pragma warning disable CS8604 // Possible null reference argument.
             await _imageDal.DeleteAsync(product.Images.Where(n => n.IsMain == true).FirstOrDefault());
         }
         else
         {
             currentImages.Add(product.Images.Where(n => n.IsMain == true).FirstOrDefault());
         }
+#pragma warning restore CS8604 // Possible null reference argument.
 
         ICollection<SubCategory> AllSubCategories = await _subCategoryDal.GetAllAsync(n => !n.IsDeleted, "Products");
 
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
         ICollection<SubCategory> subCategories = await _subCategoryDal.GetAllAsync(n => entity.SubCategoryIds.Contains(n.Id), "Products");
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
         product.SubCategories = subCategories;
 
         foreach (var subCategory in AllSubCategories)
         {
+#pragma warning disable CS8604 // Possible null reference argument.
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             if (!subCategory.Products.Select(p => p.Id).Contains(product.Id) && entity.SubCategoryIds.Contains(subCategory.Id))
             {
                 subCategory.Products.Add(product);
@@ -151,12 +178,16 @@ public class ProductRepository : IProductService
                 subCategory.Products.Remove(product);
                 await _subCategoryDal.UpdateAsync(subCategory);
             }
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
+#pragma warning restore CS8604 // Possible null reference argument.
         }
 
         product.Images = currentImages;
         product.Title = entity.Title;
         product.Price = entity.Price;
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
         product.ProductDetail.Weight = entity.ProductDetail.Weight;
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
         product.ProductDetail.Description = entity.ProductDetail.Description;
 
         
@@ -170,4 +201,5 @@ public class ProductRepository : IProductService
         if(product is null) throw new EntityIsNullException();
         await _productDal.DeleteAsync(product);
     }
+
 }

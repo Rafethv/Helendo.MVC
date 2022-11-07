@@ -110,10 +110,25 @@
 
 }
 
+.b-card .product-image .product-shadow-container product-shadow-link {
+    border: none;
+    background-color: #fff;
+    width: 50px;
+    height: 50px;
+    margin: 0 5px;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: .3s all ease-in;
+}
+
+.b-card .product-image .product-shadow-container product-shadow-link:hover i {
+    color: rgb(168, 168, 37);
+    transition: .3s all ease-out;
+}
+
 .b-card .product-image .product-shadow-container button:hover i {
     color: rgb(168, 168, 37);
     transition: .3s all ease-out;
-
 }
 
 .b-card .product-image:hover .product-shadow-container {

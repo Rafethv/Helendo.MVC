@@ -1,4 +1,5 @@
-﻿@model HomeVM
+﻿@using System.Globalization
+@model HomeVM
 
 @{
     Layout = "_HomeLayout";
@@ -132,7 +133,7 @@
                         <h5 class="card-text"><a asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id">@blog.Title</a>
                         </h5>
                         <hr>
-                        <span>@blog.CreateDate</span>
+                        <span>@blog.CreateDate.ToString("MMMM dd, yyyy", CultureInfo.InvariantCulture)</span>
                     </div>
                 </div>
             }

@@ -1,4 +1,5 @@
-﻿@model GetBlogDetailVM
+﻿@using System.Globalization
+@model GetBlogDetailVM
 
 <section class="blog-detail-section">
     <div class="container">
@@ -15,7 +16,7 @@
             <div class="blog-detail__content">
                 <div class="blog-detail__content-title">
                     <h2>@Model.Title</h2>
-                    <span>/ @Model.CreateDate /</span>
+                    <span>/ @Model.CreateDate.ToString("MMMM dd, yyyy", CultureInfo.InvariantCulture) /</span>
                 </div>
                 <p>@Model.Content</p>
                 <p class="mx-5 text-end">Author: @Model.Firstname @Model.Lastname</p>

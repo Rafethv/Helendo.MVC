@@ -66,8 +66,11 @@
                     <li><a asp-controller="Wishlist" asp-action="Index">Wishlist</a></li>
                     <li><a asp-controller="Cart" asp-action="Index">Cart</a></li>
                     <li><a asp-controller="Contact" asp-action="Index">Contact</a></li>
-                    <li><a asp-controller="Auth" asp-action="Login">Login</a></li>
-                    <li><a asp-controller="Auth" asp-action="Register">Register</a></li>
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <li><a asp-controller="Auth" asp-action="Login">Login</a></li>
+                        <li><a asp-controller="Auth" asp-action="Register">Register</a></li>
+                    }
                 </ul>
             </div>
         </div>

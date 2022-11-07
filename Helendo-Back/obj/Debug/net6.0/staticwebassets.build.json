@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "kLQWpYwu5C6ErzB8nws0hqGAer+7LP5n/HEaHOj4lms=",
+  "Hash": "bOVfn5bMegzGG4E3AXXioFGsfJyvraX/1UPD8F0XdQc=",
   "Source": "Helendo-Back",
   "BasePath": "_content/Helendo-Back",
   "Mode": "Default",
@@ -30853,6 +30853,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\images\\wood-pine.png"
+    },
+    {
+      "Identity": "C:\\Users\\Rafet\\Desktop\\Helendo-Back\\Helendo-Back\\wwwroot\\assets\\js\\basket.js",
+      "SourceId": "Helendo-Back",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Rafet\\Desktop\\Helendo-Back\\Helendo-Back\\wwwroot\\",
+      "BasePath": "_content/Helendo-Back",
+      "RelativePath": "assets/js/basket.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\js\\basket.js"
     },
     {
       "Identity": "C:\\Users\\Rafet\\Desktop\\Helendo-Back\\Helendo-Back\\wwwroot\\assets\\js\\main.js",
