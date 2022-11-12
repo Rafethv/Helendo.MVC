@@ -26,7 +26,7 @@ public class ProductRepository : IProductService
 
     public async Task<Product> GetAsync(int id)
     {
-        Product product = await _productDal.GetAsync(p => p.Id == id, "User.Image", "ProductDetail", "Images", "SubCategories", "Wishlists");
+        Product product = await _productDal.GetAsync(p => p.Id == id, "User.Image", "ProductDetail", "Images", "SubCategories", "Wishlists", "Baskets");
         if (product is null) throw new EntityIsNullException();
         return product;
     }
@@ -202,4 +202,8 @@ public class ProductRepository : IProductService
         await _productDal.DeleteAsync(product);
     }
 
+    public async Task UpdateProductWishlistAsync(Product product)
+    {
+        await _productDal.UpdateAsync(product);
+    }
 }

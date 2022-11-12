@@ -1,4 +1,5 @@
 ﻿using Business.Services;
+using Business.ViewModels;
 using Entity.Identity;
 using Entity.Model;
 using Microsoft.AspNetCore.Identity;
@@ -22,36 +23,32 @@ public class CartController : Controller
     public async Task<IActionResult> Index()
     {
         var user = await _userManager.GetUserAsync(User);
-        var userCart = await _cartService.GetAsync(user.WishlistId);
+        var userCart = await _cartService.GetAsync(user.CartId);
 
         return View(model: userCart);
     }
 
     public async Task<IActionResult> AddToBasket(int id)
     {
-        List<Product> products = new();
-
+        Cart cart = new();
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
         if (User.Identity.IsAuthenticated)
         {
             var user = await _userManager.GetUserAsync(User);
-            var cart = await _cartService.GetAsync(user.CartId);
+            Cart cartDb = await _cartService.GetAsync(user.CartId);
+            Product product = await _productService.GetAsync(id);
 
-#pragma warning disable CS8604 // Possible null reference argument.
-            products.AddRange(cart.Products);
-#pragma warning restore CS8604 // Possible null reference argument.
-            products.Add(await _productService.GetAsync(id));
-            cart.Products = products;
-            await _cartService.UpdateAsync(cart.Id, cart);
-        }
-        else
-        {
-            var product = await _cartService.GetAsync(id);
-            Response.Cookies.Append("BasketProducts", product.Id.ToString());
+            product.Baskets.Add(cartDb);
+            await _productService.UpdateProductWishlistAsync(product);
+
+            cartDb.Products.Add(product);
+            cartDb.TotalPrice += (int) product.Price;
+            await _cartService.UpdateAsync(cartDb.Id, cartDb);
+            cart = cartDb;
         }
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
 
-        return ViewComponent("Basket");
+        return PartialView("_CartPartial", model: cart);
     }
 
     public async Task<IActionResult> DeleteFromBasket(int id)
@@ -77,5 +74,13 @@ public class CartController : Controller
         await _cartService.UpdateAsync(cart.Id, cart);
 
         return ViewComponent("Basket");
+    }
+
+    public async Task<IActionResult> CartTotalPrice()
+    {
+        var user = await _userManager.GetUserAsync(User);
+        var cart = await _cartService.GetAsync(user.CartId);
+
+        return PartialView("_CartTotalPartial", model: cart);
     }
 }

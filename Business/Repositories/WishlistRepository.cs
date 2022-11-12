@@ -16,7 +16,7 @@ public class WishlistRepository : IWishlistService
 
     public async Task<Wishlist> GetAsync(int id)
     {
-        Wishlist wishlist = await _wishlistDal.GetAsync(n => n.Id == id, "Products", "User");
+        Wishlist wishlist = await _wishlistDal.GetAsync(n => n.Id == id, "Products.Images", "User");
         if (wishlist is null) throw new EntityIsNullException();
         return wishlist;
     }

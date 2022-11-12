@@ -1,6 +1,7 @@
 ﻿using Business.Services;
 using DAL.Abstracts;
 using Entity.Model;
+using Exceptions.Entity;
 
 namespace Business.Repositories;
 
@@ -13,19 +14,11 @@ public class CartRepository : ICartService
         _cartDal = cartDal;
     }
 
-    public Task CreateAsync(Cart entity)
+    public async Task<Cart> GetAsync(int id)
     {
-        throw new NotImplementedException();
-    }
-
-    public Task DeleteAsync(int id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<Cart> GetAsync(int id)
-    {
-        throw new NotImplementedException();
+        Cart cart = await _cartDal.GetAsync(n => n.Id == id, "Products.Images", "User");
+        if (cart is null) throw new EntityIsNullException();
+        return cart;
     }
 
     public Task<List<Cart>> GetAllAsync()
@@ -33,7 +26,20 @@ public class CartRepository : ICartService
         throw new NotImplementedException();
     }
 
-    public Task UpdateAsync(int id, Cart entity)
+    public Task CreateAsync(Cart entity)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task UpdateAsync(int id, Cart entity)
+    {
+        Cart cart = await _cartDal.GetAsync(n => n.Id == id, "Products");
+        cart.Products = entity.Products;
+        cart.TotalPrice = entity.TotalPrice;
+        await _cartDal.UpdateAsync(cart);
+    }
+
+    public Task DeleteAsync(int id)
     {
         throw new NotImplementedException();
     }

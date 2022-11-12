@@ -1,0 +1,21 @@
+﻿@model Cart
+@if (Model is not null) {
+    foreach (var product in @Model.Products)
+    {
+        <tr>
+            <td class="product-name">
+                <a asp-controller="Product" asp-action="Detail" asp-route-id="@product.Id">
+                    @foreach (var productImage in product.Images)
+                    {
+                        if(productImage.IsMain == true) {
+                            <img src="./assets/uploads/images/@productImage.Url" alt="product" />
+                        }
+                    }
+                </a>
+                <h2><a asp-controller="Product" asp-action="Detail" asp-route-id="@product.Id">@product.Title</a></h2>
+            </td>
+            <td class="product-price">$@product.Price</td>
+            <td class="product-remove"><button type="button"><i class="fa-solid fa-x"></i></button></td>
+        </tr>
+    }
+}

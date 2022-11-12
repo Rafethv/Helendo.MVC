@@ -30,22 +30,20 @@ public class WishlistController : Controller
 
     public async Task<IActionResult> AddToWishlist(int id)
     {
-        List<Product> products = new();
         Wishlist wishlist = new();
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
         if (User.Identity.IsAuthenticated)
         {
             var user = await _userManager.GetUserAsync(User);
-            wishlist = await _wishlistService.GetAsync(user.CartId);
+            Wishlist wishlistDb = await _wishlistService.GetAsync(user.WishlistId);
+            Product product = await _productService.GetAsync(id);
 
-#pragma warning disable CS8604 // Possible null reference argument.
-            products.AddRange(wishlist.Products);
-#pragma warning restore CS8604 // Possible null reference argument.
-            var product = await _productService.GetAsync(id);
-            product.Wishlists.Add(wishlist);
+            product.Wishlists.Add(wishlistDb);
+            await _productService.UpdateProductWishlistAsync(product);
 
-            wishlist.Products = products;
-            await _wishlistService.UpdateAsync(wishlist.Id, wishlist);
+            wishlistDb.Products.Add(product);
+            await _wishlistService.UpdateAsync(wishlistDb.Id, wishlistDb);
+            wishlist = wishlistDb;
         }
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
 
@@ -58,6 +56,12 @@ public class WishlistController : Controller
         var user = await _userManager.GetUserAsync(User);
 
         var wishlist = await _wishlistService.GetAsync(user.WishlistId);
+
+        Product productDb = await _productService.GetAsync(id);
+
+        productDb.Wishlists.Remove(wishlist);
+
+        await _productService.UpdateProductWishlistAsync(productDb);
 
         List<Product> products = new();
 

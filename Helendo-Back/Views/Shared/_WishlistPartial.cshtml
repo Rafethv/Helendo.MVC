@@ -10,7 +10,7 @@
                     {
                         if(productImage.IsMain == true)
                         {
-                              <img src="@productImage.Url" alt="product" />
+                              <img src="./assets/uploads/images/@productImage.Url" alt="product" />
                         
                         }
                     }
@@ -19,7 +19,7 @@
             </td>
             <td class="product-price">$@product.Price</td>
             <td class="product-add"><button type="button" class="add-basket">Add To Cart</button></td>
-            <td class="product-remove"><button type="button" class="delete-wishlist"><i class="fa-solid fa-x"></i></button></td>
+            <td class="product-remove"><button type="button" class="delete-wishlist" data-id="@product.Id"><i class="fa-solid fa-x"></i></button></td>
         </tr>
     }
 }

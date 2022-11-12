@@ -5,31 +5,32 @@ const deleteBasket = document.querySelectorAll(".delete-basket");
 const basketContainer = document.getElementById("basket-container");
 
 addBasket.forEach(n => n.addEventListener('click', async function () {
-    let dataId = $(this).attr('data-id');
+    let dataId = this.getAttribute("data-id");
     let resp = await fetch(`/cart/addtobasket?id=${dataId}`);
     let data = await resp.text();
 
 
-    basketContainer.forEach(n => n.innerHTML = data);
+    basketContainer.innerHTML = data;
+    await fetch('/cart/carttotalprice');
 }));
 
 
 deleteBasket.forEach(n => n.addEventListener('click', async function () {
-    let dataId = $(this).attr('data-id');
+    let dataId = this.getAttribute("data-id");
     let resp = await fetch(`/cart/deletefrombasket?id=${dataId}`);
     let data = await resp.text();
 
-    basketContainer.forEach(n => n.innerHTML = data);
+    basketContainer.innerHTML = data;
+    await fetch('/cart/carttotalprice');
 }));
 
 // Wishlist
 
 const addWishlist = document.querySelectorAll(".add-wishlist");
-const deleteWishlist = document.querySelectorAll(".delete-wishlist");
+const deleteWishlist = document.getElementsByClassName("delete-wishlist");
 const wishlistContainer = document.getElementById("wishlist-container");
 
 addWishlist.forEach(n => n.addEventListener('click', async function () {
-    console.log("Hello");
     let dataId = this.getAttribute("data-id");
     let resp = await fetch(`/wishlist/addtowishlist?id=${dataId}`);
     let data = await resp.text();
@@ -37,14 +38,23 @@ addWishlist.forEach(n => n.addEventListener('click', async function () {
     wishlistContainer.innerHTML = data;
 }));
 
-deleteWishlist.forEach(n => n.addEventListener('click', async function () {
-    let dataId = $(this).attr('data-id');
-    let resp = await fetch(`/wishlist/deletefromwishlist?id=${dataId}`);
-    let data = await resp.text();
+//deleteWishlist.forEach(n => n.addEventListener('click', async function () {
+//    let dataId = this.getAttribute("data-id");
+//    let resp = await fetch(`/wishlist/deletefromwishlist?id=${dataId}`);
+//    let data = await resp.text();
 
+//    wishlistContainer.innerHTML = data;
+//}));
 
-    wishlistContainer.innerHTML = data;
-}));
+for (var i = 0; i < deleteWishlist.length; i++) {
+    deleteWishlist[i].addEventListener("click", async function () {
+        let dataId = this.getAttribute("data-id");
+        let resp = await fetch(`/wishlist/deletefromwishlist?id=${dataId}`);
+        let data = await resp.text();
+
+        wishlistContainer.innerHTML = data;
+    });
+};
 
 const productPageNumber = document.querySelectorAll(".product-page");
 const productContainer = document.getElementById("product-container");
