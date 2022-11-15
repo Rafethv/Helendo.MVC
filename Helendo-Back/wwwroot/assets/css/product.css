@@ -110,7 +110,10 @@
 
 }
 
-.b-card .product-image .product-shadow-container product-shadow-link {
+.b-card .product-image .product-shadow-container .product-shadow-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: none;
     background-color: #fff;
     width: 50px;
@@ -119,12 +122,14 @@
     border-radius: 50%;
     overflow: hidden;
     transition: .3s all ease-in;
+    color: #000;
+    text-decoration: none;
 }
 
-.b-card .product-image .product-shadow-container product-shadow-link:hover i {
-    color: rgb(168, 168, 37);
-    transition: .3s all ease-out;
-}
+    .b-card .product-image .product-shadow-container .product-shadow-link:hover i {
+        color: rgb(168, 168, 37);
+        transition: .3s all ease-out;
+    }
 
 .b-card .product-image .product-shadow-container button:hover i {
     color: rgb(168, 168, 37);

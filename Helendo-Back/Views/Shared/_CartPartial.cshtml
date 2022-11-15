@@ -15,7 +15,7 @@
                 <h2><a asp-controller="Product" asp-action="Detail" asp-route-id="@product.Id">@product.Title</a></h2>
             </td>
             <td class="product-price">$@product.Price</td>
-            <td class="product-remove"><button type="button"><i class="fa-solid fa-x"></i></button></td>
+            <td class="product-remove"><button type="button" class="delete-basket" data-id="@product.Id"><i class="fa-solid fa-x"></i></button></td>
         </tr>
     }
 }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "QgAqZu4ac1PahC3+9ermSXeY+KC/mDBB7bu+gQL+eNQ=",
+  "Hash": "fQZsYMSQXH596hE3eYSyZf1H5UsI3x/05Gzar1dAzzw=",
   "Source": "Helendo-Back",
   "BasePath": "_content/Helendo-Back",
   "Mode": "Default",
@@ -31127,6 +31127,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\uploads\\images\\0d46e0f2-b688-468d-99bd-73c7495226e9img_logo.gif"
     },
     {
+      "Identity": "C:\\Users\\Rafet\\Desktop\\Helendo-Back\\Helendo-Back\\wwwroot\\assets\\uploads\\images\\0da45c9a-6b7e-4939-ba2c-c0267e154ce2dora-masaxca.jpg",
+      "SourceId": "Helendo-Back",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Rafet\\Desktop\\Helendo-Back\\Helendo-Back\\wwwroot\\",
+      "BasePath": "_content/Helendo-Back",
+      "RelativePath": "assets/uploads/images/0da45c9a-6b7e-4939-ba2c-c0267e154ce2dora-masaxca.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\uploads\\images\\0da45c9a-6b7e-4939-ba2c-c0267e154ce2dora-masaxca.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Rafet\\Desktop\\Helendo-Back\\Helendo-Back\\wwwroot\\assets\\uploads\\images\\0e1b5444-ef41-4231-9056-7de4d040a8d2cake.png",
       "SourceId": "Helendo-Back",
       "SourceType": "Discovered",
@@ -32232,6 +32249,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\uploads\\images\\51d6a3c6-49b4-4022-9954-f07495e0d126imperial-masa3.jpg"
     },
     {
+      "Identity": "C:\\Users\\Rafet\\Desktop\\Helendo-Back\\Helendo-Back\\wwwroot\\assets\\uploads\\images\\51ece018-5b0b-4698-b0c4-c0474a766e9akksd (1).jpg",
+      "SourceId": "Helendo-Back",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Rafet\\Desktop\\Helendo-Back\\Helendo-Back\\wwwroot\\",
+      "BasePath": "_content/Helendo-Back",
+      "RelativePath": "assets/uploads/images/51ece018-5b0b-4698-b0c4-c0474a766e9akksd (1).jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\uploads\\images\\51ece018-5b0b-4698-b0c4-c0474a766e9akksd (1).jpg"
+    },
+    {
       "Identity": "C:\\Users\\Rafet\\Desktop\\Helendo-Back\\Helendo-Back\\wwwroot\\assets\\uploads\\images\\52c5f782-28d2-451c-ad88-ba3212be9b73260-x-160hu.jpg",
       "SourceId": "Helendo-Back",
       "SourceType": "Discovered",
@@ -32298,6 +32332,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\uploads\\images\\59c068f1-b752-450d-afc3-9a80548ea666dora-masaxca.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Rafet\\Desktop\\Helendo-Back\\Helendo-Back\\wwwroot\\assets\\uploads\\images\\5dfba8b5-2558-45f3-b4f0-e2813be797d1kcxc1.jpg",
+      "SourceId": "Helendo-Back",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Rafet\\Desktop\\Helendo-Back\\Helendo-Back\\wwwroot\\",
+      "BasePath": "_content/Helendo-Back",
+      "RelativePath": "assets/uploads/images/5dfba8b5-2558-45f3-b4f0-e2813be797d1kcxc1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\uploads\\images\\5dfba8b5-2558-45f3-b4f0-e2813be797d1kcxc1.jpg"
     },
     {
       "Identity": "C:\\Users\\Rafet\\Desktop\\Helendo-Back\\Helendo-Back\\wwwroot\\assets\\uploads\\images\\5f377c47-3eb0-4908-a2db-66c080aaab79cake.png",
@@ -34151,6 +34202,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\uploads\\images\\d0d7dc39-8d09-48b5-bc69-9df0ed64219bcake.png"
+    },
+    {
+      "Identity": "C:\\Users\\Rafet\\Desktop\\Helendo-Back\\Helendo-Back\\wwwroot\\assets\\uploads\\images\\d165263e-47ea-48bf-a689-f988c500c5e0dora-masax.jpg",
+      "SourceId": "Helendo-Back",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Rafet\\Desktop\\Helendo-Back\\Helendo-Back\\wwwroot\\",
+      "BasePath": "_content/Helendo-Back",
+      "RelativePath": "assets/uploads/images/d165263e-47ea-48bf-a689-f988c500c5e0dora-masax.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\uploads\\images\\d165263e-47ea-48bf-a689-f988c500c5e0dora-masax.jpg"
     },
     {
       "Identity": "C:\\Users\\Rafet\\Desktop\\Helendo-Back\\Helendo-Back\\wwwroot\\assets\\uploads\\images\\d308e6a7-a5b8-41c6-a0bb-f39fc23e53edgame.png",

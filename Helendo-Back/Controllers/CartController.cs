@@ -22,10 +22,16 @@ public class CartController : Controller
 
     public async Task<IActionResult> Index()
     {
-        var user = await _userManager.GetUserAsync(User);
-        var userCart = await _cartService.GetAsync(user.CartId);
+        if(User.Identity.IsAuthenticated)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userCart = await _cartService.GetAsync(user.CartId);
 
-        return View(model: userCart);
+            return View(model: userCart);
+        }else
+        {
+            return View(model: null);
+        }
     }
 
     public async Task<IActionResult> AddToBasket(int id)
@@ -55,25 +61,41 @@ public class CartController : Controller
     {
         var user = await _userManager.GetUserAsync(User);
 
-        var cart = await _cartService.GetAsync(user.CartId);
+        Cart cart = await _cartService.GetAsync(user.CartId);
 
-        List<Product> products = new();
+        Product productDb = await _productService.GetAsync(id);
 
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
-        foreach (var product in cart.Products)
+        List<Cart> cartList = new();
+
+        foreach (var productCart in productDb.Baskets)
         {
-            if (product.Id != id)
+            if (cart.Id != productCart.Id)
             {
-                products.Add(product);
+                cartList.Add(productCart);
             }
         }
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
-        cart.Products = products;
+        productDb.Baskets = cartList;
+
+        await _productService.UpdateProductWishlistAsync(productDb);
+
+        List<Product> productList = new();
+
+        foreach (var product in cart.Products)
+        {
+            if (product.Id != productDb.Id)
+            {
+                productList.Add(product);
+            };
+        };
+
+        cart.Products = productList;
+        //cart.TotalPrice -= (int) productDb.Price;
+        cart.TotalPrice = 850;
 
         await _cartService.UpdateAsync(cart.Id, cart);
 
-        return ViewComponent("Basket");
+        return PartialView("_CartPartial", model: cart);
     }
 
     public async Task<IActionResult> CartTotalPrice()

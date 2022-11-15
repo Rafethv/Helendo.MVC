@@ -21,10 +21,16 @@ public class WishlistController : Controller
 
     public async Task<IActionResult> Index()
     {
-        var user = await _userManager.GetUserAsync(User);
-        var userWishlist = await _wishlistService.GetAsync(user.WishlistId);
+        if(User.Identity.IsAuthenticated)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userWishlist = await _wishlistService.GetAsync(user.WishlistId);
 
-        return View(model: userWishlist);
+            return View(model: userWishlist);
+        }else
+        {
+            return View(model: null);
+        }
     }
 
 
@@ -55,27 +61,35 @@ public class WishlistController : Controller
     {
         var user = await _userManager.GetUserAsync(User);
 
-        var wishlist = await _wishlistService.GetAsync(user.WishlistId);
+        Wishlist wishlist = await _wishlistService.GetAsync(user.WishlistId);
 
         Product productDb = await _productService.GetAsync(id);
 
-        productDb.Wishlists.Remove(wishlist);
+        List<Wishlist> wishlistList = new();
+
+        foreach (var productWishlist in productDb.Wishlists)
+        {
+            if(wishlist.Id != productWishlist.Id)
+            {
+                wishlistList.Add(productWishlist);
+            }
+        }
+
+        productDb.Wishlists = wishlistList;
 
         await _productService.UpdateProductWishlistAsync(productDb);
 
-        List<Product> products = new();
+        List<Product> productList = new();
 
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
         foreach (var product in wishlist.Products)
         {
-            if (product.Id != id)
+            if (product.Id != productDb.Id)
             {
-                products.Add(product);
-            }
-        }
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
+                productList.Add(product);
+            };
+        };
 
-        wishlist.Products = products;
+        wishlist.Products = productList;
 
         await _wishlistService.UpdateAsync(wishlist.Id, wishlist);
 

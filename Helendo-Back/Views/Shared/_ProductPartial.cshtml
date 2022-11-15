@@ -11,8 +11,10 @@
                     <div class="product-image" style="background-image: url('/assets/uploads/images/@productImage.Url'); background-position: center">
                         <div class="product-shadow-container">
                             <a class="product-shadow-link" asp-controller="Product" asp-action="Detail" asp-route-id="@product.Id"><i class="fa-solid fa-plus"></i></a>
-                            <button class="add-basket" data-id="@product.Id"><i class="fa-solid fa-bag-shopping"></i></button>
-                            <button class="add-wishlist" data-id="@product.Id"><i class="fa-regular fa-heart"></i></button>
+                            @if(User.Identity.IsAuthenticated){
+                                <button class="add-basket" data-id="@product.Id"><i class="fa-solid fa-bag-shopping"></i></button>
+                                <button class="add-wishlist" data-id="@product.Id"><i class="fa-regular fa-heart"></i></button>
+                            }
                         </div>
                     </div>
                 }

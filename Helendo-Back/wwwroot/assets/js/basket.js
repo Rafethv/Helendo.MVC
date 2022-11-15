@@ -1,28 +1,44 @@
 ﻿// Basket
 
 const addBasket = document.querySelectorAll(".add-basket");
-const deleteBasket = document.querySelectorAll(".delete-basket");
+const deleteBasket = document.getElementsByClassName("delete-basket");
 const basketContainer = document.getElementById("basket-container");
+const basketTotalContainer = document.getElementById("cart-total-container");
 
 addBasket.forEach(n => n.addEventListener('click', async function () {
     let dataId = this.getAttribute("data-id");
     let resp = await fetch(`/cart/addtobasket?id=${dataId}`);
     let data = await resp.text();
 
-
     basketContainer.innerHTML = data;
-    await fetch('/cart/carttotalprice');
+
+    let respTotal = await fetch('/cart/carttotalprice');
+    let dataTotal = await respTotal.text();
+    basketTotalContainer.innerHTML = dataTotal;
 }));
 
+//deleteBasket.forEach(n => n.addEventListener('click', async function () {
+//    let dataId = this.getAttribute("data-id");
+//    let resp = await fetch(`/cart/deletefrombasket?id=${dataId}`);
+//    let data = await resp.text();
 
-deleteBasket.forEach(n => n.addEventListener('click', async function () {
-    let dataId = this.getAttribute("data-id");
-    let resp = await fetch(`/cart/deletefrombasket?id=${dataId}`);
-    let data = await resp.text();
+//    basketContainer.innerHTML = data;
+//    await fetch('/cart/carttotalprice');
+//}));
 
-    basketContainer.innerHTML = data;
-    await fetch('/cart/carttotalprice');
-}));
+for (var i = 0; i < deleteBasket.length; i++) {
+    deleteBasket[i].addEventListener("click", async function () {
+        let dataId = this.getAttribute("data-id");
+        let resp = await fetch(`/cart/deletefrombasket?id=${dataId}`);
+        let data = await resp.text();
+
+        basketContainer.innerHTML = data;
+
+        let respTotal = await fetch('/cart/carttotalprice');
+        let dataTotal = await respTotal.text();
+        basketTotalContainer.innerHTML = dataTotal;
+    });
+};
 
 // Wishlist
 

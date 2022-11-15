@@ -48,7 +48,7 @@
                                     <a asp-controller="Auth" asp-action="Login"><i class="fa-regular fa-user"></i></a>
                                 }else
                                 {
-                                   <span>Salam</span>
+                                   <span>@User.Identity.Name</span>
                                 }
                             </li>
                             <li><a asp-controller="Wishlist" asp-action="Index"><i class="fa-regular fa-heart"></i></a></li>

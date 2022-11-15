@@ -8,10 +8,12 @@ namespace Business.Repositories;
 public class CategoryRepository : ICategoryService
 {
     private readonly ICategoryDal _categoryDal;
+    private readonly ISubCategoryDal _subCategoryDal;
 
-    public CategoryRepository(ICategoryDal categoryDal)
+    public CategoryRepository(ICategoryDal categoryDal, ISubCategoryDal subCategoryDal)
     {
         _categoryDal = categoryDal;
+        _subCategoryDal = subCategoryDal;
     }
 
     public async Task<Category> GetAsync(int id)
@@ -49,8 +51,12 @@ public class CategoryRepository : ICategoryService
 
     public async Task DeleteAsync(int id)
     {
-        Category category = await _categoryDal.GetAsync(c => c.Id == id);
+        Category category = await _categoryDal.GetAsync(c => c.Id == id, "SubCategories");
         if(category is null) throw new EntityIsNullException();
+        foreach (var subCategory in category.SubCategories)
+        {
+            await _subCategoryDal.DeleteAsync(subCategory);
+        }
         await _categoryDal.DeleteAsync(category);
     }
 }
