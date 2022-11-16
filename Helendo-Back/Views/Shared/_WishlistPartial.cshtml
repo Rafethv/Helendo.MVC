@@ -18,7 +18,7 @@
                 <h2><a asp-controller="Product" asp-action="Detail" asp-route-id="@product.Id">@product.Title</a></h2>
             </td>
             <td class="product-price">$@product.Price</td>
-            <td class="product-add"><button type="button" class="add-basket">Add To Cart</button></td>
+            <td class="product-add"><button type="button" class="add-basket" data-id="@product.Id">Add To Cart</button></td>
             <td class="product-remove"><button type="button" class="delete-wishlist" data-id="@product.Id"><i class="fa-solid fa-x"></i></button></td>
         </tr>
     }

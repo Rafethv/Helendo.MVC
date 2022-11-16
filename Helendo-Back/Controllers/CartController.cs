@@ -90,8 +90,7 @@ public class CartController : Controller
         };
 
         cart.Products = productList;
-        //cart.TotalPrice -= (int) productDb.Price;
-        cart.TotalPrice = 850;
+        cart.TotalPrice -= (int)productDb.Price;
 
         await _cartService.UpdateAsync(cart.Id, cart);
 

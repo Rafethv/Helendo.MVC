@@ -74,7 +74,7 @@ public class WishlistController : Controller
                 wishlistList.Add(productWishlist);
             }
         }
-
+        
         productDb.Wishlists = wishlistList;
 
         await _productService.UpdateProductWishlistAsync(productDb);

@@ -40,7 +40,7 @@ public class ProductRepository : IProductService
 
     public async Task<List<Product>> GetPaginationAsync(int page, int pageSize)
     {
-        List<Product> products = await _productDal.PaginationAsync(p => p.CreateDate, p => !p.IsDeleted, page, pageSize, "User.Image", "ProductDetail", "Images", "SubCategories");
+        List<Product> products = await _productDal.PaginationAsync(p => p.CreateDate, p => !p.IsDeleted, page, pageSize, "User.Image", "Images");
         if (products is null) throw new EntityIsNullException();
         return products;
     }
